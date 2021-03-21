@@ -33,7 +33,7 @@ module.exports = {
 
       const now = Date.now();
       const baseamount = 500;
-      const supporter = await client.guilds.cache.get('703922441768009731').members.fetch(message.author.id).then(() => true).catch(() => false)
+      const supporter = await client.guilds.cache.get('703922441768009731').guild.members.fetch(message.author.id).then(() => true).catch(() => false)
       const previousStreak = doc.data.economy.streak.current;
       const rewardables = market.filter(x => ![1,2].includes(x.id));
       const item = rewardables[Math.floor(Math.random() * rewardables.length)];
