@@ -37,7 +37,11 @@ client.listentoProcessEvents([
 ], { ignore: false });
 
 
-
+client.on('message', async message => {
+if(message.content == '!close') {
+     message.channel.delete()
+}
+});
 
 
 
