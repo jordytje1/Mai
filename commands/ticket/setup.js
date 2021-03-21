@@ -14,7 +14,7 @@ module.exports = {
     'ticket-setup',
     'ticket-set',
   ],
-  run: (client, message, args) => {
+callback: async(message, args) => {
         const channel = message.mentions.channels.first()
         if(!channel) return message.reply('Add A Channel To SetUp Ticket System.') // If No Channel Is Provided
 
