@@ -38,7 +38,7 @@ module.exports = {
     .addField("warned user", user)
     .addField("gewarned by", message.author)
     .addField("reason", reason);
-    let incidentchannel = message.guild.channels.cache.get("823283475431555072");
+    let incidentchannel = message.guild.channels.cache.find(ch => ch.name === "logs")
     if(!incidentchannel) return message.channel.send("Cant find logs channel.");
 
     incidentchannel.send(exampleEmbed);
