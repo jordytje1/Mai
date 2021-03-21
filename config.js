@@ -64,7 +64,7 @@ const settings = {
 
   // set the default prefix, if non-string data-type is provided, will resolve
   // to the prefix 'm!'
-  prefix: 'm!',
+  prefix: '!',
 
   // allowed features for the bot, you can add/remove features you want.
   allowedFeatures: [ 'ANISCHEDULE', 'CHATBOT', 'EXPERIENCE_POINTS'],
@@ -72,7 +72,7 @@ const settings = {
   // logging channels for the bot. To disable logging specific events - pass
   // a falsy value (undefined, null, 0). You may also remove the property
   // altogether, although this is not preferred.
-  channels: { debug: '792385081850986496', votes: '809665224377761813', uploads: '728866550207086642', logs: '761935856331128837' },
+  channels: { debug: '823169018042122260', votes: '823169085231726602', uploads: '823169235857309727', logs: '823171371307237377' },
 
   // enable/disable database system in the bot, this will automatically disable
   // all commands and features that requires database if disabled.
@@ -91,7 +91,7 @@ const settings = {
   
   // Array of owners recognized by the bot. ID here will be given access to
   // owner based commands.
-  owners: [ '545427431662682112' ],
+  owners: [ '376384142599782410' ],
 
   // websites affiliated with the bot, can be accessed through
   // Client#config#websites
