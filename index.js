@@ -73,12 +73,8 @@ const { MessageEmbed } = require("discord.js")
                 .setTitle('Welcome To Your Ticket')
                 .setDescription('Please Provide Your Issues')
                 .setTimestamp()
-                .setFooter(`Ticket For ${user.username}#${user.discriminator}`)
-                )
-            })
-        }
-    })
-}
+                .setFooter(`Ticket For ${user.username}#${user.discriminator}`);
+                
 
 
 
