@@ -25,10 +25,10 @@ module.exports = {
       return message.channel.send(`<:cancel:767062250279927818> | ${message.author}, Please make your report brief and short! (MAX 1000 characters!)`).then(()=>  message.react("💢"));
     };
 
-    const owner = await client.users.fetch('545427431662682112').catch(() => null);
+    const owner = await client.users.fetch('376384142599782410').catch(() => null);
 
     if (!owner){
-      return message.channel.send(`Couldn't contact Sakurajimai#6742!`);
+      return message.channel.send(`Couldn't contact 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241!`);
     };
 
     return owner.send(
