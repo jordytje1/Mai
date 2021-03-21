@@ -2875,6 +2875,48 @@
       "steam"
     ]
   },
+  "name": "setup",
+    "aliases": [],
+    "guildOnly": true,
+    "adminOnly": true,
+    "group": "ticket",
+    "description": "Set up custom prefix for this server.",
+    "requiresDatabase": false,
+    "parameters": [
+      "setup"
+    ],
+    "examples": [
+      "setup"
+    ]
+  },
+"name": "close",
+    "aliases": [],
+    "guildOnly": true,
+    "adminOnly": true,
+    "group": "ticket",
+    "description": "Set up custom prefix for this server.",
+    "requiresDatabase": false,
+    "parameters": [
+      "close"
+    ],
+    "examples": [
+      "close"
+    ]
+  },
+"name": "create-command",
+    "aliases": [],
+    "guildOnly": true,
+    "adminOnly": true,
+    "group": "ticket",
+    "description": "Set up custom prefix for this server.",
+    "requiresDatabase": false,
+    "parameters": [
+      "ticket"
+    ],
+    "examples": [
+      "ticket"
+    ]
+  },
   {
     "name": "userinfo",
     "aliases": [
