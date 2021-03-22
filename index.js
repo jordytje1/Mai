@@ -248,11 +248,11 @@ client.on("message", async message => {
         if (!guild) return;
         const category = guild.channels.cache.find((x) => x.name == "MODMAIL")
         if (!category) return;
-        const main = guild.channels.cache.find((x) => x.name == message.author.username)
+        const main = guild.channels.cache.find((x) => x.name == message.author.id)
 
 
         if (!main) {
-            let mx = await guild.channels.create(message.author.username, {
+            let mx = await guild.channels.create(message.author.id, {
                 type: "text",
                 parent: category.id,
                 topic: "This mail is created for helping  **" + message.author.tag + " **"
@@ -273,6 +273,7 @@ client.on("message", async message => {
                 .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
                 .setDescription(message.content)
                 .addField("Name", message.author.username)
+                .addField("Id", message.author.id)
                 .addField("Account Creation Date", message.author.createdAt)
                 .addField("Direct Contact", "No(it means this mail is opened by person not a staff)")
 
