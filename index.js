@@ -248,7 +248,7 @@ client.on("message", async message => {
         if (!guild) return;
         const category = guild.channels.cache.find((x) => x.name == "MODMAIL")
         if (!category) return;
-        const main = guild.channels.cache.find((x) => x.name == message.author.id)
+        const main = guild.channels.cache.find((x) => x.name == message.author.username)
 
 
         if (!main) {
