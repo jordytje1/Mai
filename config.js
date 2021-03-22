@@ -5,7 +5,7 @@ const settings = {
   client: {
     presence: {
       activity: {
-        name: 'https://mai-san.ml/',
+        name: '.',
         type: 'COMPETING'
       }
     },
