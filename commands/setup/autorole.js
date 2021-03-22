@@ -1,16 +1,13 @@
-module.exports = Cmds.addCommand({
-    cmds: [";setautorole ", ";addautorole ", ";arole "],
 
-    requires: {
-        guild: true,
-        loud: false
-    },
 
-    desc: "Set a new autorole",
 
-    args: "([role_name]) ([auto_role_name])",
-
-    example: "for-hire hire",
+module.exports = {
+	name: 'autorole',
+	category: 'moderation',
+	description: 'Feeling bored? Get some activities to do.',
+	aliases: [],
+	usage: 'autorole',
+	run: async (client, message, args) => {
 
     ///////////////////////////////////////////////////////////////////////////////////////////
 
