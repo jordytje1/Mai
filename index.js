@@ -45,7 +45,7 @@ if(message.content == '!close') {
 
 
 let Discord = require('discord.js');
-const config = require("./config.json");
+const configs = require("./config.json");
 const db = require("quick.db")
 const table = new db.table("Tickets");
 
@@ -58,20 +58,20 @@ client.on("message", async message => {
     if(message.author.bot) return;
     if(message.content.includes("@everyone") || message.content.includes("@here")) return message.author.send("You may not use everyone/here mentions.")
     let active = await dbTable.get(`support_${message.author.id}`)
-    let guild = client.guilds.cache.get(config.guild);
+    let guild = client.guilds.cache.get(configs.guild);
     let channel, found = true;
     let user = await dbTable.get(`isBlocked${message.author.id}`);
     if(user === true || user === "true") return message.react("❌");
     if(active === null){
       active = {};
-      let modrole = guild.roles.cache.get(config.roles.mod);
+      let modrole = guild.roles.cache.get(configs.roles.mod);
       let everyone = guild.roles.cache.get(guild.roles.everyone.id);
-      let bot = guild.roles.cache.get(config.roles.bot);
+      let bot = guild.roles.cache.get(configs.roles.bot);
       await dbTable.add("ticket", 1)
       let actualticket = await dbTable.get("ticket");
       channel = await guild.channels.create(`${message.author.username}-${message.author.discriminator}`, { type: 'text', reason: `Modmail created ticket #${actualticket}.` });
-      channel.setParent(config.ticketCategory);
-      channel.setTopic(`#${actualticket} (Open) | ${config.prefix}complete to close this ticket | Modmail for ${message.author.username}`)
+      channel.setParent(configs.ticketCategory);
+      channel.setTopic(`#${actualticket} (Open) | ${configs.prefix}complete to close this ticket | Modmail for ${message.author.username}`)
       channel.createOverwrite(modrole, {
         VIEW_CHANNEL: true,
         SEND_MESSAGES: true,
@@ -92,8 +92,8 @@ client.on("message", async message => {
 	.setTitle("New ticket created")
 	.addField("Ticket no.", actualticket, true)
 	.addField("Channel", `<#${channel.id}>`, true)
-      if(config.logs){
-	client.channels.cache.get(config.log).send({embed: newTicket})
+      if(configs.logs){
+	client.channels.cache.get(configs.log).send({embed: newTicket})
       }
       const newChannel = new Discord.MessageEmbed()
         .setColor("BLUE").setAuthor(author.tag, author.avatarURL())
@@ -133,7 +133,7 @@ client.on("message", async message => {
     if(!supportUser) return message.channel.delete();
     
     // reply (with user and role)
-    if(message.content.startsWith(`${config.prefix}reply`)){
+    if(message.content.startsWith(`${configs.prefix}reply`)){
       var isPause = await table.get(`suspended${support.targetID}`);
       let isBlock = await table.get(`isBlocked${support.targetID}`);
       if(isPause === true) return message.channel.send("This ticket already paused. Unpause it to continue.")
@@ -150,7 +150,7 @@ client.on("message", async message => {
     };
     
     // anonymous reply
-    if(message.content.startsWith(`${config.prefix}areply`)){
+    if(message.content.startsWith(`${configs.prefix}areply`)){
       var isPause = await table.get(`suspended${support.targetID}`);
       let isBlock = await table.get(`isBlocked${support.targetID}`);
       if(isPause === true) return message.channel.send("This ticket already paused. Unpause it to continue.")
@@ -162,17 +162,17 @@ client.on("message", async message => {
     };
     
     // print user ID
-    if(message.content === `${config.prefix}id`){
+    if(message.content === `${configs.prefix}id`){
       return message.channel.send(`User's ID is **${support.targetID}**.`);
     };
     
     // suspend a thread
-    if(message.content === `${config.prefix}pause`){
+    if(message.content === `${configs.prefix}pause`){
       var isPause = await table.get(`suspended${support.targetID}`);
       if(isPause === true || isPause === "true") return message.channel.send("This ticket already paused. Unpause it to continue.")
       await table.set(`suspended${support.targetID}`, true);
       var suspend = new Discord.MessageEmbed()
-      .setDescription(`⏸️ This thread has been **locked** and **suspended**. Do \`${config.prefix}continue\` to cancel.`)
+      .setDescription(`⏸️ This thread has been **locked** and **suspended**. Do \`${configs.prefix}continue\` to cancel.`)
       .setTimestamp()
       .setColor("YELLOW")
       message.channel.send({embed: suspend});
@@ -180,7 +180,7 @@ client.on("message", async message => {
     };
     
     // continue a thread
-    if(message.content === `${config.prefix}continue`){
+    if(message.content === `${configs.prefix}continue`){
       var isPause = await table.get(`suspended${support.targetID}`);
       if(isPause === null || isPause === false) return message.channel.send("This ticket was not paused.");
       await table.delete(`suspended${support.targetID}`);
@@ -193,7 +193,7 @@ client.on("message", async message => {
     
     
     // complete
-    if(message.content.toLowerCase() === `${config.prefix}complete`){
+    if(message.content.toLowerCase() === `${configs.prefix}complete`){
         var embed = new Discord.MessageEmbed()
         .setDescription(`This ticket will be deleted in **10** seconds...\n:lock: This thread has been locked and closed.`)
         .setColor("RED").setTimestamp()
