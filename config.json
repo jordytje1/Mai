@@ -1,0 +1,10 @@
+{
+	"guild": "your server id here",
+	"log": "a botlog channel id here",
+	"prefix": ">",
+	"roles": {
+		"bot": "your bot's role id here",
+		"mod": "staff role id here"
+	},
+	"ticketCategory": "ticket category id here" 
+}
