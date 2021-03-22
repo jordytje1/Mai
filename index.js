@@ -44,175 +44,256 @@ if(message.content == '!close') {
 });
 
 
-let Discord = require('discord.js');
-const configs = require("./config.json");
-const db = require("quick.db")
-const table = new db.table("Tickets");
+const discord = require("discord.js");
+const { prefix, ServerID } = require("./config.json")
+const configs = require('./config.json');
+                             
 
+client.on("channelDelete", (channel) => {
+    if (channel.parentID == channel.guild.channels.cache.find((x) => x.name == "MODMAIL").id) {
+        const person = channel.guild.members.cache.find((x) => x.id == channel.name)
+
+        if (!person) return;
+
+        let yembed = new discord.MessageEmbed()
+            .setAuthor("MAIL DELETED", client.user.displayAvatarURL())
+            .setColor('RED')
+            .setThumbnail(client.user.displayAvatarURL())
+            .setDescription("Your mail is deleted by moderator and if you have any problem with that than you can open mail again by sending message here.")
+        return person.send(yembed)
+
+    }
+
+
+})
 
 
 client.on("message", async message => {
-  
-  if(message.channel.type === "dm"){
-    const dbTable = new db.table("Tickets");
-    if(message.author.bot) return;
-    if(message.content.includes("@everyone") || message.content.includes("@here")) return message.author.send("You may not use everyone/here mentions.")
-    let active = await dbTable.get(`support_${message.author.id}`)
-    let guild = client.guilds.cache.get(configs.guild);
-    let channel, found = true;
-    let user = await dbTable.get(`isBlocked${message.author.id}`);
-    if(user === true || user === "true") return message.react("❌");
-    if(active === null){
-      active = {};
-      let modrole = guild.roles.cache.get(configs.roles.mod);
-      let everyone = guild.roles.cache.get(guild.roles.everyone.id);
-      let bot = guild.roles.cache.get(configs.roles.bot);
-      await dbTable.add("ticket", 1)
-      let actualticket = await dbTable.get("ticket");
-      channel = await guild.channels.create(`${message.author.username}-${message.author.discriminator}`, { type: 'text', reason: `Modmail created ticket #${actualticket}.` });
-      channel.setParent(configs.ticketCategory);
-      channel.setTopic(`#${actualticket} (Open) | ${configs.prefix}complete to close this ticket | Modmail for ${message.author.username}`)
-      channel.createOverwrite(modrole, {
-        VIEW_CHANNEL: true,
-        SEND_MESSAGES: true,
-        READ_MESSAGE_HISTORY: true
-      });
-      channel.createOverwrite(everyone, {
-        VIEW_CHANNEL: false
-      });
-      channel.createOverwrite(bot, {
-        VIEW_CHANNEL: true,
-        SEND_MESSAGES: true,
-        READ_MESSAGE_HISTORY: true,
-        MANAGE_MESSAGES: true
-      })
-      let author = message.author;
-      const newTicket = new Discord.MessageEmbed()
-	.setColor("GREEN").setAuthor(author.tag, author.avatarURL({dynamic: true}))
-	.setTitle("New ticket created")
-	.addField("Ticket no.", actualticket, true)
-	.addField("Channel", `<#${channel.id}>`, true)
-      if(configs.logs){
-	client.channels.cache.get(configs.log).send({embed: newTicket})
-      }
-      const newChannel = new Discord.MessageEmbed()
-        .setColor("BLUE").setAuthor(author.tag, author.avatarURL())
-        .setDescription(`Ticket #${actualticket} created.\nUser: ${author}\nID: ${author.id}`)
-        .setTimestamp()
-      await client.channels.cache.get(channel.id).send({embed:newChannel});
-      message.author.send(`Hello ${author.username}, your ticket #${actualticket} has been created.`)
-      active.channelID = channel.id;
-      active.targetID = author.id;
+    if (message.author.bot) return;
+
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    let command = args.shift().toLowerCase();
+
+
+    if (message.guild) {
+
+        if (command == "setup") {
+            if (!message.content.startsWith(prefix)) return;
+            if (!message.member.hasPermission("ADMINISTRATOR")) {
+                return message.channel.send("You need Admin Permissions to setup the modmail system!")
+            }
+
+            if (!message.guild.me.hasPermission("ADMINISTRATOR")) {
+                return message.channel.send("Bot need Admin Permissions to setup the modmail system!")
+            }
+
+
+            let role = message.guild.roles.cache.find((x) => x.name == "Staff")
+            let everyone = message.guild.roles.cache.find((x) => x.name == "@everyone")
+
+            if (!role) {
+                role = await message.guild.roles.create({
+                    data: {
+                        name: "Staff",
+                        color: "GREEN"
+                    },
+                    reason: "Role needed for ModMail System"
+                })
+            }
+
+            await message.guild.channels.create("MODMAIL", {
+                type: "category",
+                topic: "All the mail will be here",
+                permissionOverwrites: [
+                    {
+                        id: role.id,
+                        allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"]
+                    },
+                    {
+                        id: everyone.id,
+                        deny: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"]
+                    }
+                ]
+            })
+
+
+            return message.channel.send("Setup is Completed ✅")
+
+        } else if (command == "close") {
+            if (!message.content.startsWith(prefix)) return;
+            if (!message.member.roles.cache.find((x) => x.name == "Staff")) {
+                return message.channel.send("You need `Staff` role to use this command")
+            }
+            if (message.channel.parentID == message.guild.channels.cache.find((x) => x.name == "MODMAIL").id) {
+
+                const person = message.guild.members.cache.get(message.channel.name)
+
+                if (!person) {
+                    return message.channel.send("I am Unable to close the channel and this error is coming because probaly channel name is changed.")
+                }
+
+                await message.channel.delete()
+
+                let yembed = new discord.MessageEmbed()
+                    .setAuthor("MAIL CLOSED", client.user.displayAvatarURL())
+                    .setColor("RED")
+                    .setThumbnail(client.user.displayAvatarURL())
+                    .setFooter("Mail is closed by " + message.author.username)
+                if (args[0]) yembed.setDescription(`Reason: ${args.join(" ")}`)
+
+                return person.send(yembed)
+
+            }
+        } else if (command == "open") {
+            if (!message.content.startsWith(prefix)) return;
+            const category = message.guild.channels.cache.find((x) => x.name == "MODMAIL")
+
+            if (!category) {
+                return message.channel.send("Moderation system is not setuped in this server, use " + prefix + "setup")
+            }
+
+            if (!message.member.roles.cache.find((x) => x.name == "Staff")) {
+                return message.channel.send("You need `Staff` role to use this command")
+            }
+
+            if (isNaN(args[0]) || !args.length) {
+                return message.channel.send("Please Give the ID of the person")
+            }
+
+            const target = message.guild.members.cache.find((x) => x.id === args[0])
+
+            if (!target) {
+                return message.channel.send("Unable to find this person.")
+            }
+
+
+            const channel = await message.guild.channels.create(target.id, {
+                type: "text",
+                parent: category.id,
+                topic: "Mail is Direct Opened by **" + message.author.username + "** to make contact with " + message.author.tag
+            })
+
+            let nembed = new discord.MessageEmbed()
+                .setAuthor("DETAILS", target.user.displayAvatarURL({ dynamic: true }))
+                .setColor("BLUE")
+                .setThumbnail(target.user.displayAvatarURL({ dynamic: true }))
+                .setDescription(message.content)
+                .addField("Name", target.user.username)
+                .addField("Account Creation Date", target.user.createdAt)
+                .addField("Direct Contact", "Yes(it means this mail is opened by a Staff)");
+
+            channel.send(nembed)
+
+            let uembed = new discord.MessageEmbed()
+                .setAuthor("DIRECT MAIL OPENED")
+                .setColor("GREEN")
+                .setThumbnail(client.user.displayAvatarURL())
+                .setDescription("You have been contacted by Staff of **" + message.guild.name + "**, Please wait until he send another message to you!");
+
+
+            target.send(uembed);
+
+            let newEmbed = new discord.MessageEmbed()
+                .setDescription("Opened The Mail: <#" + channel + ">")
+                .setColor("GREEN");
+
+            return message.channel.send(newEmbed);
+        } else if (command == "help") {
+            if (!message.content.startsWith(prefix)) return;
+            let embed = new discord.MessageEmbed()
+                .setAuthor('MODMAIL BOT', client.user.displayAvatarURL())
+                .setURL('https://flamebot.gq')
+                .setColor("#FF0000")
+
+                .setDescription("This bot is made by FiredragonPlayz") //Please Don't Remove Credits
+                .addField("$setup", "Setup the modmail system(This is not for multiple server.)", true)
+
+                .addField("$open", 'Let you open the mail to contact anyone with his ID', true)
+                .setThumbnail(client.user.displayAvatarURL())
+                .addField("$close", "Close the mail in which you use this command.", true);
+
+            return message.channel.send(embed)
+
+        }
     }
-    channel = client.channels.cache.get(active.channelID);
-    var msg = message.content;
-    var whatWeWant = msg.replace("@everyone", "[everyone]").replace("@here", `[here]`) // idk if that's useful since we're blocking mentions
-    // fix (#6)
-    var isPaused = await dbTable.get(`suspended${message.author.id}`);
-    var isBlocked = await dbTable.get(`isBlocked${message.author.id}`);
-    if(isPaused === true){
-    	return message.channel.send("Sorry, but your ticket is currently paused. I'll message you back when the support team unpause it.")
+
+
+
+
+
+
+
+    if (message.channel.parentID) {
+
+        const category = message.guild.channels.cache.find((x) => x.name == "MODMAIL")
+
+        if (message.channel.parentID == category.id) {
+            let member = message.guild.members.cache.get(message.channel.name)
+
+            if (!member) return message.channel.send('Unable To Send Message')
+
+            let lembed = new discord.MessageEmbed()
+                .setColor("GREEN")
+                .setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+                .setDescription(message.content)
+
+            return member.send(lembed)
+        }
+
+
     }
-    if(isBlocked === true) return; // the user is blocked, so we're just gonna move on.
-    if(message.attachments.size > 0){
-      let attachment = new Discord.MessageAttachment(message.attachments.first().url)
-      client.channels.cache.get(active.channelID).send(`${message.author.username} > ${whatWeWant}`, {files: [message.attachments.first().url]})
-    } else {
-      client.channels.cache.get(active.channelID).send(`${message.author.username} > ${whatWeWant}`);
+
+    if (!message.guild) {
+        const guild = await client.guilds.cache.get(ServerID) || await client.guilds.fetch(ServerID).catch(m => { })
+        if (!guild) return;
+        const category = guild.channels.cache.find((x) => x.name == "MODMAIL")
+        if (!category) return;
+        const main = guild.channels.cache.find((x) => x.name == message.author.id)
+
+
+        if (!main) {
+            let mx = await guild.channels.create(message.author.id, {
+                type: "text",
+                parent: category.id,
+                topic: "This mail is created for helping  **" + message.author.tag + " **"
+            })
+
+            let sembed = new discord.MessageEmbed()
+                .setAuthor("MAIL OPENED")
+                .setColor("GREEN")
+                .setThumbnail(client.user.displayAvatarURL())
+                .setDescription("Conversation is now started, you will be contacted by staff soon")
+
+            message.author.send(sembed)
+
+
+            let eembed = new discord.MessageEmbed()
+                .setAuthor("DETAILS", message.author.displayAvatarURL({ dynamic: true }))
+                .setColor("BLUE")
+                .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+                .setDescription(message.content)
+                .addField("Name", message.author.username)
+                .addField("Account Creation Date", message.author.createdAt)
+                .addField("Direct Contact", "No(it means this mail is opened by person not a staff)")
+
+
+            return mx.send(eembed)
+        }
+
+        let xembed = new discord.MessageEmbed()
+            .setColor("RED")
+            .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+            .setDescription(message.content)
+
+
+        main.send(xembed)
+
     }
-    await dbTable.set(`support_${message.author.id}`, active);
-    await dbTable.set(`supportChannel_${active.channelID}`, message.author.id);
-    return;
-  }
-  if(message.author.bot) return;
-  var table = new db.table("Tickets");
-  var support = await table.get(`supportChannel_${message.channel.id}`);
-  if(support){
-    var support = await table.get(`support_${support}`);
-    let supportUser = client.users.cache.get(support.targetID);
-    if(!supportUser) return message.channel.delete();
-    
-    // reply (with user and role)
-    if(message.content.startsWith(`${configs.prefix}reply`)){
-      var isPause = await table.get(`suspended${support.targetID}`);
-      let isBlock = await table.get(`isBlocked${support.targetID}`);
-      if(isPause === true) return message.channel.send("This ticket already paused. Unpause it to continue.")
-      if(isBlock === true) return message.channel.send("The user is blocked. Unblock them to continue or close the ticket.")
-      var args = message.content.split(" ").slice(1)
-      let msg = args.join(" ");
-      message.react("✅");
-      if(message.attachments.size > 0){
-        let attachment = new Discord.MessageAttachment(message.attachments.first().url)
-        return supportUser.send(`${message.author.username} > ${msg}`, {files: [message.attachments.first().url]})
-      } else {
-        return supportUser.send(`${message.author.username} > ${msg}`);
-      }
-    };
-    
-    // anonymous reply
-    if(message.content.startsWith(`${configs.prefix}areply`)){
-      var isPause = await table.get(`suspended${support.targetID}`);
-      let isBlock = await table.get(`isBlocked${support.targetID}`);
-      if(isPause === true) return message.channel.send("This ticket already paused. Unpause it to continue.")
-      if(isBlock === true) return message.channel.send("The user is blocked. Unblock them to continue or close the ticket.")
-      var args = message.content.split(" ").slice(1)
-      let msg = args.join(" ");
-      message.react("✅");
-      return supportUser.send(`Support Team > ${msg}`);
-    };
-    
-    // print user ID
-    if(message.content === `${configs.prefix}id`){
-      return message.channel.send(`User's ID is **${support.targetID}**.`);
-    };
-    
-    // suspend a thread
-    if(message.content === `${configs.prefix}pause`){
-      var isPause = await table.get(`suspended${support.targetID}`);
-      if(isPause === true || isPause === "true") return message.channel.send("This ticket already paused. Unpause it to continue.")
-      await table.set(`suspended${support.targetID}`, true);
-      var suspend = new Discord.MessageEmbed()
-      .setDescription(`⏸️ This thread has been **locked** and **suspended**. Do \`${configs.prefix}continue\` to cancel.`)
-      .setTimestamp()
-      .setColor("YELLOW")
-      message.channel.send({embed: suspend});
-      return client.users.cache.get(support.targetID).send("Your ticket has been paused. We'll send you a message when we're ready to continue.")
-    };
-    
-    // continue a thread
-    if(message.content === `${configs.prefix}continue`){
-      var isPause = await table.get(`suspended${support.targetID}`);
-      if(isPause === null || isPause === false) return message.channel.send("This ticket was not paused.");
-      await table.delete(`suspended${support.targetID}`);
-      var c = new Discord.MessageEmbed()
-      .setDescription("▶️ This thread has been **unlocked**.")
-      .setColor("BLUE").setTimestamp()
-      message.channel.send({embed: c});
-      return client.users.cache.get(support.targetID).send("Hi! Your ticket isn't paused anymore. We're ready to continue!");
-    }
-    
-    
-    // complete
-    if(message.content.toLowerCase() === `${configs.prefix}complete`){
-        var embed = new Discord.MessageEmbed()
-        .setDescription(`This ticket will be deleted in **10** seconds...\n:lock: This thread has been locked and closed.`)
-        .setColor("RED").setTimestamp()
-        message.channel.send({embed: embed})
-        var timeout = 10000
-        setTimeout(() => {end(support.targetID);}, timeout)
-      }
-      async function end(userID){
-        table.delete(`support_${userID}`);
-        let actualticket = await table.get("ticket");
-        message.channel.delete()
-        return client.users.cache.get(support.targetID).send(`Your ticket #${actualticket} has been closed! If you wish to open a new ticket, feel free to message me.`)
-      }
-    };
+
+
+
+
 })
-
-                             
-
-
 
 
 
