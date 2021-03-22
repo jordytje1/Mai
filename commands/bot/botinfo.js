@@ -31,6 +31,6 @@ module.exports = {
 					{ name: 'Created', value: `\`\`\`${moment(client.user.createdTimestamp).format('MMMM Do YYYY, h:mm:ss')} | ${Math.floor((Date.now() - client.user.createdTimestamp) / 86400000)} day(s) ago\`\`\`` },
 				);
 			message.channel.send(embed);
-		});
+		};
 	},
 };
