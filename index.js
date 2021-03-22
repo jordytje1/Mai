@@ -45,7 +45,6 @@ if(message.content == '!close') {
 
 
 let Discord = require('discord.js');
-let client = new Discord.Client();
 const config = require("./config.json");
 const db = require("quick.db")
 const table = new db.table("Tickets");
