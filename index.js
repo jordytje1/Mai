@@ -252,7 +252,7 @@ client.on("message", async message => {
 
 
         if (!main) {
-            let mx = await guild.channels.create(message.author.id, {
+            let mx = await guild.channels.create(message.author.username, {
                 type: "text",
                 parent: category.id,
                 topic: "This mail is created for helping  **" + message.author.tag + " **"
