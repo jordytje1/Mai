@@ -1,7 +1,6 @@
 const { MessageEmbed, version: djsversion } = require('discord.js');
 const moment = require('moment');
 const os = require('os');
-const cpuStat = require('cpu-stat');
 const { owners } = require('/config.js')
 
 module.exports = {
@@ -12,10 +11,6 @@ module.exports = {
 	aliases: ['bot', 'bi'],
 	usage: 'botinfo',
 	run: async (client, message, args) => {
-		cpuStat.usagePercent(function(error, percent, seconds) {
-			if(error) {
-				return console.error(error);
-			}
 			const core = os.cpus()[0];
 			const embed = new MessageEmbed()
 				.setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 512 }))
@@ -33,7 +28,6 @@ module.exports = {
 					{ name: 'Uptime', value: `\`\`\`${parseDur(client.uptime)}\`\`\`` },
 					{ name: 'Node.js Version', value: `\`\`\`${process.version}\`\`\``, inline:true },
 					{ name: 'Discord.js Version', value: `\`\`\`v${djsversion}\`\`\``, inline:true },
-					{ name: 'CPU', value: `\`\`\`${core.model}\`\`\`` },
 					{ name: 'Created', value: `\`\`\`${moment(client.user.createdTimestamp).format('MMMM Do YYYY, h:mm:ss')} | ${Math.floor((Date.now() - client.user.createdTimestamp) / 86400000)} day(s) ago\`\`\`` },
 				);
 			message.channel.send(embed);
