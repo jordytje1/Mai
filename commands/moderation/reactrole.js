@@ -1,5 +1,17 @@
 const { MessageEmbed} = require("discord.js");
-module.exports.run = async (client, message, args, settings) => {
+
+
+module.exports = {
+    name: "reactionroles",
+    aliases: ['reactionroles','reaction-roles','rr'],
+    category: 'moderation',
+    description: "Permet de gérer les roles reactions du serveur.",
+    usage: '[paramètre] (valeur)',
+    examples :['rr add 714041691904016424 732983983377350676 👍 @Role'],
+],
+
+run: async (client, message, args, settings) => {
+    
     if(args[0].toLowerCase() === 'add'){
         const rrCreateDescription = new MessageEmbed()
             .setTitle(`Sous commande : ${settings.prefix}reaction-role add`)
@@ -102,17 +114,3 @@ module.exports.run = async (client, message, args, settings) => {
     }
 
 };
-module.exports.help = {
-
-    name: "reactionroles",
-    aliases: ['reactionroles','reaction-roles','rr'],
-    category: 'administration',
-    description: "Permet de gérer les roles reactions du serveur.",
-    cooldown: 10,
-    usage: '[paramètre] (valeur)',
-    exemple :['rr add 714041691904016424 732983983377350676 👍 @Role'],
-    isUserAdmin: false,
-    permissions: false,
-    args: true,
-    sousCommdandes : ["rr add","rr rem"]
-} 
