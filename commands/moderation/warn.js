@@ -1,48 +1,63 @@
-const Discord = require("discord.js")
-const fs = require("fs");
-const { MessageEmbed } = require('discord.js');
+const mongo = require('../mongo')
+const warnShema = require('../schema')
+
 module.exports = {
-	name: 'warn',
-	category: 'moderation',
-	description: 'warn someone',
-	aliases: ['warn'],
-	usage: 'warn <user> <reason>',
-	run: async (client, message, args) => {
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sorry, you dont have the right permissions to do this.");
+    name: 'warn',
+    description: "warns the mentioned member",
+    async execute(client, message, args, Discord) {
+        const target = message.mentions.users.first();
+        if (!target) return message.reply("please specfy the member to warn. and provide a good reason")
+        else if (!message.member.hasPermission('MUTE_MEMBERS')) return message.reply('You have no permission.')
+        else {
+            if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You have no permission.')
+            else {
+                memberTarget = message.guild.members.cache.get(target.id) || message.guild.members.cache.get(args[0]);
+                args.shift();
+                const guildId = message.guild.id;
+                const userId = message.member.id;
+                const reason = args.join(' ')
 
-    var user = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+                const warning = {
+                    author: message.member.user.tag,
+                    timestamp: new Date().getTime(),
+                    reason
+                }
 
-    if (!user) return message.channel.send("This user is not in this server.");
-    
-    if (user.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You cant warn staff.");
+                const embedMsg = new Discord.MessageEmbed()
+                    .setColor('#ff0000')
+                    .setTitle('warned user:')
+                    .setThumbnail(`${target.displayAvatarURL()}`)
+                    .setDescription(`<@${target.id}> has been warned`)
+                    .addFields({ name: 'Reason:', value: `${reason}` });
 
-    var reason = args.join(" ").slice(22);
+                message.channel.send(embedMsg);
+                const embedDmMsg = new Discord.MessageEmbed()
+                    .setColor('#ff0000')
+                    .setTitle('warned user:')
+                    .setThumbnail(`${target.displayAvatarURL()}`)
+                    .setDescription(`<@${target.id}> has been warned`)
+                    .addFields({ name: 'Reason:', value: `${reason}` });
+                memberTarget.send(embedDmMsg)
 
-    if (!reason) return message.channel.send("Give me a reason.");
-
-    const warns = require("../../assets/warnings.json");
-
-    if (!warns[user.id]) warns[user.id] = {
-        warns: 0
-    };
-
-    warns[user.id].warns++;
-
-    fs.writeFile("././assets/warnings.json", JSON.stringify(warns), (err) => {
-        if (err) console.log(err)
-    });
-//test
-    const exampleEmbed = new Discord.MessageEmbed()
-	.setColor('#4955a9')
-    .setTitle(`**WARN**`)
-    .addField("warned user", user)
-    .addField("gewarned by", message.author)
-    .addField("reason", reason);
-    let incidentchannel = message.guild.channels.cache.find(ch => ch.name === "logs")
-    if(!incidentchannel) return message.channel.send("Cant find logs channel.");
-
-    incidentchannel.send(exampleEmbed);
-
-    message.channel.send(`:white_check_mark: Succesfully warned user: ${user}`);
-	}
+                await mongo().then(async mongoose => {
+                    try {
+                        await warnShema.findOneAndUpdate({
+                            guildId,
+                            userId
+                        }, {
+                            guildId,
+                            userId,
+                            $push: {
+                                warnings: warning
+                            }
+                        }, {
+                            upsert: true
+                        })
+                    } finally {
+                        mongoose.connection.close()
+                    }
+                })
+            }
+        }
+    }
 }
