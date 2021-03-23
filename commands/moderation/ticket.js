@@ -1,70 +1,48 @@
-const discord = require('discord.js')
-
-
-
 module.exports = {
-	name: 'ticket',
-	category: 'moderation',
-	description: 'Feeling bored? Get some activities to do.',
-	aliases: [],
-	usage: 'ticket',
-	run: async (client, message, args) => {
-		
-    if (message.guild.channels.cache.some(channel => channel.name == "ticket-" + message.author.username)) return message.channel.send(`you already have a ticket!`);
-	
-		
- let logchannel = message.guild.channels.cache.find(ch => ch.name === "logs")
+    config: {
+        name: "new", // أسم الأمر الرئيسي..
+        aliases: ['ticket'], // بإمكانك إضافة أختصارات اخرى..
+        permission: 0, // مستوى البرمشنات لأستخدام الأمر, 0 = جميع الأعضاء..
+        category: "tickets"
+    },
+    exec: async (client, msg, args, storage) => {
+        const { RichEmbed } = require("discord.js");
+        let [parent, support, supervisor] = [storage.tickets.category, msg.guild.roles.get(storage.tickets.roles.support), msg.guild.roles.get(storage.tickets.roles.supervisor)]
+        let co = true;
 
- if(!logchannel) return message.channel.send("Couldn't find log channel called 'logchannel'")
+        /**
+         * 
+         * تحقق بطريقة بسيطة جداً لجعل الأعضاء يقومون بفتح تذكرة واحدة فقط كل مرة. يجب عليهم إغلاق التذكرة المفتوحة ليتمكن من افتتاح اخرى
+         * 
+         */ 
+        function check() {
+            let channels = msg.guild.channels.filter(ch => ch.type === "text" && ch.name.startsWith("ticket-")); // نسوي فيلتر للرومات كلها 
+            channels.forEach(channel => { if(channel.topic.includes(msg.author.id)) co = false; });
+        }
+        check(); // تحقق إذا العضو عنده تذاكر من قبل...
 
- let perms = message.member.hasPermission("ADMINISTRATOR")
+        if(!co) { // إذا عنده تذكرة بالفعل .. 
+            let embed = new RichEmbed().addField(":x: Error 404", `You already have a ticket opened. please close it first before you create new one!`).setColor("RED");
+            return msg.channel.send({embed: embed});
+        }
 
- if(!perms) return message.channel.send("You do not have permission to do this!")
+        let ticket = await msg.guild.createChannel(`ticket-${msg.author.username}`, 'text'); // إنشاء قناة التذكرة للعضو
 
-  
+        let ch = msg.guild.channels.find(channel => channel.id == parent); // نحاول نجيب قسم التذاكر إذا موجود
+        if(ch && ch.type === "category") ticket.setParent(ch.id); // إذا موجود وهي كاتيجوري.. ننزل التذكرة تحته
+        
+        ticket.setTopic(msg.author.id); // هذا مهم عشان يشوف إذا الشخص فت تذكرة من قبل او لا...
 
-  //   if(!args[0]) return message.channel.send("Please include a name for the channel!")
-
-  
-
-  let createembed = new discord.MessageEmbed()
-
-  .setColor('#15E3F0')
-
-  .setTitle('Channel Created | ')
-
-  .addField('Created By: ', `**${message.author.username}**`)
-
-  .setTimestamp()
-
-  .setFooter("Author: 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241")
-
-let role = message.guild.roles.cache.find(r => r.name === "『💛』『support』");
-  message.guild.channels.create(`ticket-${message.author.username}`,(args.slice(0).join(" "), {type: 'text',
-
-			     permissionOverwrites: [{
-			          allow: "VIEW_CHANNEL",
-			          id: role
-		        },
-		        {
-				  deny: "VIEW_CHANNEL",
-				  id: message.guild.id
-			},
-		        {
-				allow: "VIEW_CHANNEL",
-			        id: message.author.id
-			}
-		   ]
-								
-	}))
-        message.channel.send(`., #${message.channel.name}.`);
-        const embed = new Discord.RichEmbed()
-        .setColor(0xCF40FA)
-        .addField(`Hey ${message.author.username}!`, `.`)
-        .setTimestamp();
-        message.channel.send({ embed: embed });
-  message.channel.send("Channel successfully created!");
-
-  logchannel.send(createembed)
-   },
+        // Overwriting channel permissions..
+        ticket.overwritePermissions(msg.guild.defaultRole, { SEND_MESSAGES: false, VIEW_CHANNEL: false, READ_MESSAGE_HISTORY: false }); // شيل البرمشنات من الرتبة الاساسية للسيرفر
+        ticket.overwritePermissions(msg.author.id, { SEND_MESSAGES: true, VIEW_CHANNEL: true, READ_MESSAGE_HISTORY: true }); // نعطي العضو برمشنات للقراءة والكتابة في التذكرة
+        if(support) ticket.overwritePermissions(support.id, { SEND_MESSAGES: true, VIEW_CHANNEL: true, READ_MESSAGE_HISTORY: true }); // إذا فيه رتبة سبورت نعطيها برمشنات كمان
+        if(supervisor) ticket.overwritePermissions(supervisor.id, { SEND_MESSAGES: true, VIEW_CHANNEL: true, READ_MESSAGE_HISTORY: true, MANAGE_MESSAGES: true }); // إذا فيه رتبة مشرف نعطيه برمشنات مع إمكانية تعديل الرسائل او حذفها من التذكرة.
+        let embed = new RichEmbed().setColor("BLUE").setAuthor(`Hello ${msg.author.tag}`, msg.author.displayAvatarURL).setDescription(storage.tickets.messages.welcome);
+        ticket.send({embed: embed}); // نرسل رسالة الولكم في التذكرة..
+        
+        embed = new RichEmbed().setColor("GREEN").addField(`✅ Ticket Created`, `Successfully created your ticket <#${ticket.id}>`);
+        msg.channel.send({embed: embed}); // أخيرا نرسل للعضو في الروم انه تم افتتاح التذكرة بنجاح!
+    }
 };
+
