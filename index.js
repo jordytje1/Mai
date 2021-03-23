@@ -297,72 +297,36 @@ client.on("message", async message => {
 })
 
 
-client.on('ready', () => {
-
-const Discord = require('discord.js');
-const PREFIX = '!';
+let channel_id = "823167603828457473"; 
+let message_id = "824001951544770611";
 
 
-client.on('message', async message => {
-    if (!message.content.startsWith(PREFIX)) return;
-    
-    // splitting up the prefix and the command
-    const args = message.content.slice(PREFIX.length).split(/ +/);
-    const command = args.shift().toLowerCase();
 
-    // roles command
-    // sends an Embeded message that allows for role assignment via reactions
-    if (command === 'reactroles')
-    {
-        // creating embedded message
-        let embed = new Discord.MessageEmbed()
-        .setTitle('Reaction Roles')
-        .setDescription(':robot_face: - Discord Bot\n' + 
-        ':desktop: - Website\n' + 
-        ':video_game: - Game')
-        .setColor('BLUE')
-        let msgEmbed = await message.channel.send(embed)
-        
-        // adding the reactions to the embed
-        msgEmbed.react('🤖')
-        msgEmbed.react('🖥️')
-        msgEmbed.react('🎮')
-    }
-})
+client.on("ready", (reaction, user) => {
 
-// handling added reactions
-client.on('messageReactionAdd', async (reaction, user) => {
-    if (reaction.message.partial) await reaction.message.fetch();
-    if (reaction.partial) await reaction.fetch;
-
-    // making sure reaction isn't by the bot
-    if(user.bot) return;
-   
-    // assigning role based off reaction choice
-    if (reaction.emoji.name === '🤖')
-        await reaction.message.id('824001951544770611').guild.members.cache.get(user.id).roles.add('823989536295878666')
-    if (reaction.emoji.name === '🖥️')
-        await reaction.message.guild.members.cache.get(user.id).roles.add('823989536295878666')
-    if (reaction.emoji.name === '🎮')
-        await reaction.message.guild.members.cache.get(user.id).roles.add('823989536295878666')
-})
-
-// handling removed reactions
-client.on('messageReactionRemove', async (reaction, user) => {
-    if (reaction.message.partial) await reaction.message.fetch();
-    if (reaction.partial) await reaction.fetch;
-
-    // making sure reaction isn't by the bot
-    if(user.bot) return;
-
-    // removing role when reaction is removed
-    if (reaction.emoji.name === '🤖')
-        await reaction.message.guild.members.cache.get(user.id).roles.remove('823989536295878666')
-    if (reaction.emoji.name === '🖥️')
-        await reaction.message.guild.members.cache.get(user.id).roles.remove('823989536295878666')
-    if (reaction.emoji.name === '🎮')
-        await reaction.message.guild.members.cache.get(user.id).roles.remove('823989536295878666')
-})
+client.channels.get(channel_id).fetchMessage(message_id).then(m => {
+        console.log("Cached reaction message.");
+    }).catch(e => {
+    console.error("Error loading message.");
+    console.error(e);
+    });
+  
+  client.on("messageReactionAdd", (reaction, user) => {
+    if(reaction.emoji.id == ":robot:" && reaction.message.id === message_id) 
+        {
+            guild.fetchMember(user) // fetch the user that reacted
+                .then((member) => 
+                {
+                    let role = (member.guild.roles.find(role => role.name === "test"));
+                    member.addRole(role)
+                    .then(() => 
+                    {
+                        console.log(`Added the role to ${member.displayName}`);
+                    }
+                    );
+                });
+        }
+}
 
 
 
