@@ -24,7 +24,7 @@ module.exports = {
         .setColor('GREY')
         .setTitle('Hello! I\'m Mai and I am a bot based around anime')
         .setAuthor(client.user.username, client.user.displayAvatarURL())
-        .setFooter(`Help | \©️${new Date().getFullYear()} Mai`)
+        .setFooter(`Help | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
         .setDescription([
           '<a:mai_stare1:783382661195759616><a:mai_stare2:783383003216216123><a:mai_stare3:783383266760851526><a:mai_stare4:783383656013627484>',
           '<a:mai_stare1:783382661195759616><a:mai_stare2:783383003216216123><a:mai_stare3:783383266760851526><a:mai_stare4:783383656013627484>',
@@ -76,7 +76,7 @@ module.exports = {
         .setColor('GREY')
         .setDescription(command.description)
         .setAuthor(client.prefix + command.name, client.user.displayAvatarURL())
-        .setFooter(`Help | \©️${new Date().getFullYear()} Mai`)
+        .setFooter(`Help | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
         .addFields([
           { name: 'Aliases', value: text.joinArray(command.aliases) || 'None' , inline: true },
           {
