@@ -113,5 +113,4 @@ run: async (client, message, args, settings) => {
                 if(e.message.match('Unknown Message'))return message.channel.send(`${client.config.emojis.error}Je n'ai pas trouver ce message.`);
                 else return message.channel.send(`${client.config.emojis.error}Une erreur s'est produite. Merci de vérifiez les paramètres de la commande.`);
          }
-	},
-};
+	}
