@@ -297,34 +297,6 @@ client.on("message", async message => {
 })
 
 
-let channel_id = "823167603828457473"; 
-let message_id = "824001951544770611";
-
-
-
-client.on("ready", (reaction, user) => {
-
-client.channels.get(channel_id).fetchMessage(message_id).then(m => {
-        console.log("Cached reaction message.");
-    }).catch(e => {
-    console.error("Error loading message.");
-    console.error(e);
-    });
-  
-  client.on("messageReactionAdd", (reaction, user) => {
-    if(reaction.emoji.id == ":robot:" && reaction.message.id === message_id) 
-        {
-            guild.fetchMember(user) // fetch the user that reacted
-                .then((member) => 
-                {
-                    let role = (member.guild.roles.find(role => role.name === "test"));
-                    member.addRole(role)
-                    .then(() => 
-                    {
-                        console.log(`Added the role to ${member.displayName}`);
-                    }
-                    );
-                });
 
 
 
