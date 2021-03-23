@@ -303,7 +303,7 @@ client.on("message", async message => {
 
 
 
-const { Client, MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const react = new Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });
 // Partials is the way to get uncached stuff from events.
 
