@@ -2,7 +2,7 @@ const discord = require("discord.js")
 const fs = require("fs");
 
 
-const supportbot = yaml.load(fs.readFileSync('./supportbot-config.yml', 'utf8'));
+const supportbot = require('/supportbot-config.yml');
 
 class TicketNumberID {
     
