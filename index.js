@@ -337,11 +337,11 @@ client.on('messageReactionAdd', async (reaction, user) => {
    
     // assigning role based off reaction choice
     if (reaction.emoji.name === '🤖')
-        await reaction.message.guild.members.cache.get(user.id).roles.add('762734541344342056')
+        await reaction.message.guild.members.cache.get(user.id).roles.add('823989536295878666')
     if (reaction.emoji.name === '🖥️')
-        await reaction.message.guild.members.cache.get(user.id).roles.add('762821113709330443')
+        await reaction.message.guild.members.cache.get(user.id).roles.add('823989536295878666')
     if (reaction.emoji.name === '🎮')
-        await reaction.message.guild.members.cache.get(user.id).roles.add('762821150186274842')
+        await reaction.message.guild.members.cache.get(user.id).roles.add('823989536295878666')
 })
 
 // handling removed reactions
@@ -354,11 +354,11 @@ client.on('messageReactionRemove', async (reaction, user) => {
 
     // removing role when reaction is removed
     if (reaction.emoji.name === '🤖')
-        await reaction.message.guild.members.cache.get(user.id).roles.remove('762734541344342056')
+        await reaction.message.guild.members.cache.get(user.id).roles.remove('823989536295878666')
     if (reaction.emoji.name === '🖥️')
-        await reaction.message.guild.members.cache.get(user.id).roles.remove('762821113709330443')
+        await reaction.message.guild.members.cache.get(user.id).roles.remove('823989536295878666')
     if (reaction.emoji.name === '🎮')
-        await reaction.message.guild.members.cache.get(user.id).roles.remove('762821150186274842')
+        await reaction.message.guild.members.cache.get(user.id).roles.remove('823989536295878666')
 })
 
 
