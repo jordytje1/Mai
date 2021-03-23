@@ -115,4 +115,4 @@ run: async (client, message, args, settings) => {
             }
         }
 
-    }
+    });
