@@ -1,4 +1,7 @@
 {
+    "ticketchannel": "channel id", // the channel id where your ticket reaction message will be
+    "ticketcategory": "category id", // the category id where your tickets will be created (optional)
+    "dburl": "mongo db url" // your mongo db login url
     "prefix": "?",
     "ServerID": "734869150240866484"
 }   
