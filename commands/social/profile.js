@@ -51,7 +51,7 @@ module.exports = {
 
       const canvas = createCanvas(800,600);
       const ctx = canvas.getContext('2d');
-      const color = doc.data.profile.color || 'rgb(255,182,193)'
+      const color = doc.data.profile.color || 'rgb(114, 137, 218)'
 
       const hat = doc.data.profile.hat ? await loadImage(doc.data.profile.hat) : null;
       const emblem = doc.data.profile.emblem ? await loadImage(doc.data.profile.emblem) : null;
