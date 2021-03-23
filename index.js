@@ -304,12 +304,12 @@ client.on('message', message => {
      */
     if(message.author.bot) {
         if(message.embeds.length === 1 && message.embeds[0].description.startsWith('React')) {
-            message.react(':ticketreact:625925895013662721')
+            message.react(':white_check_mark:823906739333890098')
             .then(msgReaction => console.log('Reacted.'))
             .catch(err => console.log(err));
         }
         if(message.embeds.length === 1 && message.embeds[0].title === 'Ticket Support') {
-            message.react(':checkreact:625938016510410772')
+            message.react(':white_check_mark:823906739333890098')
             .then(reaction => console.log("Reacted with " + reaction.emoji.name))
             .catch(err => console.log(err));
         }
@@ -334,9 +334,9 @@ client.on('message', message => {
  */
 client.on('raw', payload => {
     if(payload.t === 'MESSAGE_REACTION_ADD') { // Check if the event name is MESSAGE_REACTION_ADD
-        if(payload.d.emoji.name === 'ticketreact') // If the emoji is ticketreact
+        if(payload.d.emoji.name === 'white_check_mark') // If the emoji is ticketreact
         {
-            if(payload.d.message_id === '625926893954400266') { // Here we check if the id of the message is the ID of the embed that we had the bot send using the ?sendmsg command.
+            if(payload.d.message_id === '823906739333890098') { // Here we check if the id of the message is the ID of the embed that we had the bot send using the ?sendmsg command.
                 let channel = client.channels.get(payload.d.channel_id) // Get the proper channel object.
                 if(channel.messages.has(payload.d.message_id)) { // Check if the channel has the message in the cache.
                     return;
@@ -344,7 +344,7 @@ client.on('raw', payload => {
                 else { // Fetch the message and then get the reaction & user objects and emit the messageReactionAdd event manually.
                     channel.fetchMessage(payload.d.message_id)
                     .then(msg => {
-                        let reaction = msg.reactions.get('ticketreact:625925895013662721');
+                        let reaction = msg.reactions.get('white_check_mark:823906739333890098');
                         let user = client.users.get(payload.d.user_id);
                         client.emit('messageReactionAdd', reaction, user);
                     })
@@ -354,7 +354,7 @@ client.on('raw', payload => {
         }
         // Check if the emoji is checkreact, meaning we're deleting the channel.
         // This will only be significant if our bot crashes/restarts and there are additional ticket channels that have not been closed.
-        else if(payload.d.emoji.name === 'checkreact') {
+        else if(payload.d.emoji.name === 'white_check_mark') {
             let channel = client.channels.get(payload.d.channel_id);
             if(channel.messages.has(payload.d.message_id)) {
                 return;
@@ -362,7 +362,7 @@ client.on('raw', payload => {
             else {
                 channel.fetchMessage(payload.d.message_id)
                 .then(msg => {
-                    let reaction = msg.reactions.get('checkreact:625938016510410772');
+                    let reaction = msg.reactions.get('white_check_mark:823906739333890098');
                     let user = client.users.get(payload.d.user_id);
                     client.emit('messageReactionAdd', reaction, user);
                 })
@@ -379,7 +379,7 @@ client.on('raw', payload => {
 });
 
 client.on('messageReactionAdd', (reaction, user) => {
-    if(reaction.emoji.name === 'ticketreact') { // If the emoji name is ticketreact, we will create the ticket channel.
+    if(reaction.emoji.name === 'white_check_mark') { // If the emoji name is ticketreact, we will create the ticket channel.
         /**
          * Here we need to check the map to see if the user's id is in there, indicating they have a ticket.
          * We also need to check if there are any other guild channels with their name concatenated with 's-ticket'. We need to 
@@ -417,7 +417,7 @@ client.on('messageReactionAdd', (reaction, user) => {
             }).catch(err => console.log(err));
         }
     }
-    else if(reaction.emoji.name === 'checkreact') {
+    else if(reaction.emoji.name === 'white_check_mark') {
         // If emoji is checkreact, they are trying to close the ticket.
         if(userTickets.has(user.id)) {
             if(reaction.message.channel.id === userTickets.get(user.id)) {
