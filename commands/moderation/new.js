@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const fs = require('fs');
-const config = require('./confoeg.js');
+config = require('../config/confoeg');
 
 module.exports = {
 	name: 'new',
