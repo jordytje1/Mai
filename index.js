@@ -300,7 +300,7 @@ client.on("message", async message => {
 
 
 
-const config = require('./conflig.json');
+const conflig = require('./conflig.json');
 
 const Discord = require('discord.js');
 const cllient = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
@@ -310,7 +310,7 @@ cllient.on('messageReactionAdd', async (reaction, user) => {
     
     let serverData;
 
-    config.reactions.forEach((el)=>{
+    conflig.reactions.forEach((el)=>{
         if (el.messageId == reaction.message.id && el.emojiId == reaction.emoji.id) {
             serverData = el;
         }
@@ -332,7 +332,7 @@ cllient.on('messageReactionRemove', async (reaction, user) => {
     
     let serverData;
 
-    config.reactions.forEach((el)=>{
+    conflig.reactions.forEach((el)=>{
         if (el.messageId == reaction.message.id && el.emojiId == reaction.emoji.id) {
             serverData = el;
         }
