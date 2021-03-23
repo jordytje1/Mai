@@ -300,7 +300,6 @@ client.on("message", async message => {
 
 
 const Discord = require('discord.js');
-const prefix = !
 
 const settings = new enmap({
  name: 'settings',
