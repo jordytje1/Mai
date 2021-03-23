@@ -1,77 +1,65 @@
-const Discord = require("discord.js");
-const color = require('../../colors.json');
-module.exports.run = async (bot, message, args) => {
-    let tickets = message.guild.channels.cache.find(c => c.name == "tickets" && c.type == "text");
-    if(!tickets){
-      message.channel.send("The ticket channel is missing, please provide a 'Tickets' channel.");
-    }else{
-      let msg = await message.channel.send("Robots are handling your request...");
-    let ticketembed = new Discord.MessageEmbed()
-    .setColor(color.geel)
-    .setTitle("Ticket creation")
-    .addField('Hi there!', 'In order to get support, react with the following emoji :tickets:.', true)
-    .setTimestamp()
-    .setFooter("Ticket System", bot.user.displayAvatarURL());
-    tickets.send({embed: ticketembed}).then(ticketembed => {ticketembed.react("🎟️");this.messageId = message.id;});
-    message.channel.send("Your ticket panel has been created at #tickets .");
-    msg.delete();
-  }
-    bot.on("messageReactionAdd", async(reaction, user) => {
-      if(user.bot) return;
-        if(reaction.emoji.name === "🎟️"){
-          let tickets = message.guild.channels.cache.find(c => c.name == "Tickets" && c.type == "text");
-          let category = message.guild.channels.cache.find(c => c.name == "Open-Tickets" && c.type == "category");
-          if(!category){
-          message.guild.channels.create('Open-Tickets', {
-          type: 'category',
-          permissionsOverwrites: [{
-            id: message.guild.id,
-            deny: ['MANAGE_MESSAGES'],
-            allow: ['SEND_MESSAGES']
-          }]
-        }).then(console.log("Category created"));
-      }else{
-          let name = `ticket-numberherelater`;
-            message.guild.channels.create(name, {
-            type: "text",
-            topic: `Thank you for contacting support ${user.username}`,
-            permissionOverwrites: [{
-           id: message.guild.id,
-           deny: ['VIEW_CHANNEL'],
-         },
-         {
-           id: user.id,
-           allow: ['VIEW_CHANNEL'],
-         }
-       ]
-     }).then(
-            (chan) => {
-              console.log("Channel creation");
-              channel = message.guild.channels.cache.find(c => c.name == "ticket-numberherelater" && c.type == "text");
-              if (category && channel) channel.setParent(category.id);
-              else console.error(`One of the channels is missing:\nCategory: ${!!category}\nChannel: ${!!channel}`);
-              let ticketCreationEmbed = new Discord.MessageEmbed()
-              .setColor(color.blue)
-              .setTitle("Hi there!")
-              .addField('Please choose a category in order to get the correct help.','\u200B')
-              .addField("💥 = Crash  👨‍💻 = Server problem  💿 = Others", '\u200B')
-              .setFooter("Ticket System", bot.user.displayAvatarURL());
-              chan.send({embed: ticketCreationEmbed}).then(ticketCreationEmbed => {ticketCreationEmbed.react("💥").then(() => ticketCreationEmbed.react('👨‍💻')).then(() => ticketCreationEmbed.react('💿'));});
-              if(reaction.emoji.name === "💥"){
-                message.channel.send("It's a crash! :o");
-              }else if(reaction.emoji.name === "‍👨‍💻‍"){
-                message.channel.send("It's a server problem! :o");
-              }else if(reaction.emoji.name === "‍💿‍"){
-                message.channel.send("It's an other problem! :o");
-              }
+module.exports = {
+	name: 'setup',
+	alias: ['set'],
+	args: {
+		value: false,
+	},
+	guildOnly: true,
+	ownerOnly: false,
+	disabled: false,
+	execute(msg, args) {
+    if (msg.author.id !== msg.guild.ownerID) return msg.reply('only owner of the guild can use this command.');
+    if (args.length === 0) {
+      msg.channel.send('This dialog will help you configure the bot.\nNow only one setting is available (staff role). 😦\nEnter a role name for staff.')
+      .then(() => {
+        msg.channel.awaitMessages(m => m.author.id === msg.guild.ownerID, { max: 1, time: 60000, errors: ['time'] })
+        .then(collected => {
+          let role = msg.guild.roles.find(role => role.name.includes(collected.first().content));
+          if (role === null) {
+            msg.reply('cannot find the role you given. Create it? [**yes**, **no**]')
+            .then(() => {
+              msg.channel.awaitMessages(m => m.author.id === msg.guild.ownerID, { max: 1, time: 60000, errors: ['time'] })
+              .then(coll => {
+                if (coll.first().content === 'yes') {
+                  msg.guild.createRole({ name: collected.first().content, color: 'RANDOM' })
+                  .then(role => {
+                    msg.reply(`successefully created **${role.name}**.`);
+                    settings.set(msg.guild.id.toString(), { staffRole: collected.first().content, setup: true });
+                  })
+                  .catch(roleError => {
+                    console.error(roleError);
+                    msg.reply(`something wrong. Here's a tip that can help you.\nMaybe I have no permissions?\n\tMANAGE_ROLES: **${msg.guild.me.hasPermission(['MANAGE_ROLES'])}**\n\tADMINISTRATOR: **${msg.guild.me.hasPermission(['ADMINISTRATOR'])}**`);
+                  });
+                } else {
+                  msg.reply('ok. Aborting.');
+                }
+              })
+            })
+            .catch(e => console.error(e));
+          } else settings.set(msg.guild.id.toString(), { staffRole: collected.first().content, setup: true });
+        })
+        .catch(error => console.error(error));
+      })
+      .catch(err => console.error(err));
+    } else if (args.length > 1) {
+      let arg = args.shift().toString();
+      switch (arg) {
+        case 'staffRole':
+          msg.guild.createRole({ name: args[0], color: 'RANDOM' })
+          .then(role => {
+            msg.reply(`successefully created **${role.name}**.`);
+            settings.set(msg.guild.id.toString(), { staffRole: args[0] });
+          })
+          .catch(roleError => {
+            console.error(roleError);
+            msg.reply(`something wrong. Here's a tip that can help you.\nMaybe I have no permissions?\n\tMANAGE_ROLES: **${msg.guild.me.hasPermission(['MANAGE_ROLES'])}**\n\tADMINISTRATOR: **${msg.guild.me.hasPermission(['ADMINISTRATOR'])}**`);
           });
-}
-        }
-    });
-};
-
-exports.help = {
-  name: 'ticket',
-  description: 'Create a support-ticket.',
-  usage: 'ticket'
+          break;
+        default:
+          msg.reply('this does nothing. Keep do what you do.');
+      }
+    } else {
+      msg.reply('it does nothing. Keep do what you do.');
+    }
+	}
 };
