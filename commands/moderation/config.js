@@ -27,7 +27,7 @@
  */
 
 module.exports = {
-	prefix: '-',
+	prefix: '!',
 	name: 'DiscordTickets',
 	presences: [
 		{
