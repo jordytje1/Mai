@@ -1,31 +1,32 @@
-const Discord = require("discord.js");
-
 module.exports = {
-    info: {
-        name: "setup",
-        category: "ticket",
-        permission: "founder",
-    },
-    execute: async (msg, { config, mongoose }) => {
-        // TODO: Proper emoji configuration which saves in the database - i was too lazy.
-        let guildId = msg.guild.id;
-        let emoji = msg.guild.emojis.cache.find(
-            (emoji) => emoji.id === config.tickets.emoji
-        );
+	help: ()=> "Post a message that users can react to in order to open tickets.",
+	usage: ()=> [" [channel] - Post the starter message."],
+	desc: ()=> "The channel can be a #mention, channel ID, or channel-name.",
+	execute: async (bot, msg, args) => {
+		if(!args[0]) return "Please provide a channel to post to."
 
-        const ticketEmbed = new Discord.MessageEmbed()
-            .setTitle("Server Support")
-            .setDescription(
-                `React with the <:${emoji.name}:${emoji.id}> to create a ticket!`
-            )
-            .setColor("#3498db")
-            .setFooter(
-                "Your ticket will be located at the top of discord.",
-                "https://cdn.discordapp.com/avatars/771824383429050379/4c48fcc72ea0640c9a1b8709770f41bc.png"
-            );
-        let ticketMessage = await msg.channel.send(ticketEmbed);
-        ticketMessage.react(emoji);
+		var cfg = await bot.stores.configs.get(msg.guild.id);
+		if(!cfg?.category_id) return "Please run `tg!setup` before doing this.";
 
-        await mongoose.updateTicketGuildMessage(guildId, ticketMessage.id);
-    },
-};
+		var channel = msg.guild.channels.cache.find(ch => [ch.id, ch.name].includes(args[0].replace(/[<#>]/g, "").toLowerCase()));
+		if(!channel) return "Channel not found.";
+
+		try {
+			var message = await channel.send({embed: {
+				title: "Start Ticket",
+				description: `React to this post with ✅ to start a new ticket.\n\nNOTE: Users can have ${cfg?.ticket_limit || 5} tickets open at once.`,
+				color: 2074412
+			}});
+			message.react("✅")
+			await bot.stores.posts.create(msg.guild.id, message.channel.id, message.id);
+		} catch(e) {
+			console.log(e.stack);
+			return "Error:\n"+(e.message || e);
+		}
+
+		return "Post sent.";
+	},
+	permissions: ["MANAGE_MESSAGES"],
+	alias: ["p","send"],
+	guildOnly: true
+}
