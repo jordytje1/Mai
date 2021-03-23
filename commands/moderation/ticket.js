@@ -5,7 +5,7 @@ const bot = new Discord.Client()
 const fs = require("fs")
 
 
-const supportbot = yaml.load(fs.readFileSync('./supportbot-config.yml', 'utf8'));
+const supportbot = require('/supportbot-config.yml');
 const TicketNumberID = require('../utils/TicketNumber.js');
 
 const reacted = [];
