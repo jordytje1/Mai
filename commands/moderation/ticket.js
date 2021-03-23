@@ -5,7 +5,7 @@ module.exports = {
 		value: false,
 	},
 	guildOnly: true,
-	ownerOnly: false,
+	ownerOnly: true,
 	disabled: false,
 	run: async (msg, args) => {
     if (msg.author.id !== msg.guild.ownerID) return msg.reply('only owner of the guild can use this command.');
