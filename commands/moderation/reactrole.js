@@ -11,7 +11,7 @@ module.exports = {
         .setColor('#17b111')
         .setTitle('React to the corresponding emojis to get personalized notifications!')
         .setDescription('Once reacting you will gain your roles!\n\n'
-            + `${usEmoji} US\n`
+            + `${usEmoji} US\n`);
 
 
         let messageEmbed = await message.channel.send(embed);
