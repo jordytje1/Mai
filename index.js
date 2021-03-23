@@ -325,8 +325,6 @@ client.channels.get(channel_id).fetchMessage(message_id).then(m => {
                     }
                     );
                 });
-        }
-})
 
 
 
