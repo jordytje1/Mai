@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const color = require('../colors.json');
+const color = require('../../colors.json');
 module.exports.run = async (bot, message, args) => {
     let tickets = message.guild.channels.cache.find(c => c.name == "tickets" && c.type == "text");
     if(!tickets){
