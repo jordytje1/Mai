@@ -320,7 +320,7 @@ client.on('message', message => {
      * added to that. Check the 'raw' event.
      */
     if(message.content.toLowerCase() === '?sendmsg') {
-        const embed = new discord.RichEmbed();
+        const embed = new discord.MessageEmbed();
         embed.setAuthor(client.user.username, client.user.displayAvatarURL);
         embed.setDescription('React to this message to open a support ticket');
         embed.setColor('#F39237')
