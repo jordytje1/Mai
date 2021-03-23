@@ -296,6 +296,9 @@ client.on("message", async message => {
 
 })
 
+
+client.on('ready', () => {
+
 const Discord = require('discord.js');
 const PREFIX = '!';
 
@@ -337,7 +340,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
    
     // assigning role based off reaction choice
     if (reaction.emoji.name === '🤖')
-        await reaction.message.guild.members.cache.get(user.id).roles.add('823989536295878666')
+        await reaction.message.id('824001951544770611').guild.members.cache.get(user.id).roles.add('823989536295878666')
     if (reaction.emoji.name === '🖥️')
         await reaction.message.guild.members.cache.get(user.id).roles.add('823989536295878666')
     if (reaction.emoji.name === '🎮')
