@@ -1,11 +1,10 @@
 {
-    "token":"",
     "activity":"Giving you roles",
     "reactions":[
         {
-            "messageId":"",
-            "emojiId":"",
-            "roleId":""
+            "messageId":"824011375272525874",
+            "emojiId":":white_check_mark:",
+            "roleId":"823989536295878666"
         }
     ]
 }
