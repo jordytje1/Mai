@@ -1,7 +1,6 @@
 const { MessageEmbed } = require('discord.js');
-const { join } = require('path');
 const fs = require('fs');
-const config = require(join(__dirname, '../../user/', require('../').config));
+const config = require('../../user/config');
 
 module.exports = {
 	name: 'new',
