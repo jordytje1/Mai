@@ -1,7 +1,7 @@
 const discord = require("discord.js")
 const fs = require("fs");
 
-const yaml = require('js-yaml');
+
 const supportbot = yaml.load(fs.readFileSync('./supportbot-config.yml', 'utf8'));
 
 class TicketNumberID {
