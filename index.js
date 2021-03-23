@@ -309,7 +309,7 @@ client.on('message', async message => {
 
     // roles command
     // sends an Embeded message that allows for role assignment via reactions
-    if (command === 'roles')
+    if (command === 'reactroles')
     {
         // creating embedded message
         let embed = new Discord.MessageEmbed()
