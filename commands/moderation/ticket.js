@@ -7,8 +7,8 @@ module.exports = {
 	guildOnly: true,
 	ownerOnly: true,
 	disabled: false,
-	run: async (msg, args) => {
-    if (msg.author.id !== msg.guild.ownerID) return msg.reply('only owner of the guild can use this command.');
+	run: async (msg, args, message) => {
+    if (message.author.id !== msg.guild.ownerID) return msg.reply('only owner of the guild can use this command.');
     if (args.length === 0) {
       msg.channel.send('This dialog will help you configure the bot.\nNow only one setting is available (staff role). 😦\nEnter a role name for staff.')
       .then(() => {
