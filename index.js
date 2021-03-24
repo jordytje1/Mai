@@ -455,22 +455,22 @@ client.on("messageReactionAdd", async (reaction, user) => {
 
 
 
-let cargoInfo = "693475907914170409";
-let cargoAdm = "693476137124364348";
-let cargoVest = "693476099463708755";
+let cargoInfo = "823989536295878666";
+let cargoAdm = "823989536295878666";
+let cargoVest = "823989536295878666";
 
-let cargoIngles = "693506659875815495";
-let cargoEspanhol = "693506804528709714";
+let cargoIngles = "823989536295878666";
+let cargoEspanhol = "823989536295878666";
 
-let cargo1 = "694954979659743332";
-let cargo2 = "697247704354521148";
-let cargo3 = "697247810927722600";
+let cargo1 = "823989536295878666";
+let cargo2 = "823989536295878666";
+let cargo3 = "823989536295878666";
 
-let cargoMembro = "693477248359071765";
+let cargoMembro = "823989536295878666";
 
-let idMsg = "693479898127532062";
+let idMsg = "824375562293739582";
 
-let idGuild = "693452265956180109";
+let idGuild = "734869150240866484";
 
 client.on("raw", async e => {
   if (e.t == "MESSAGE_REACTION_ADD") {
@@ -493,7 +493,7 @@ client.on("raw", async e => {
           break;
         }
       }
-    } else if (e.d.message_id == "693508433344987196") {
+    } else if (e.d.message_id == "824375562293739582") {
       let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
       switch (e.d.emoji.name) {
         case "🇺🇸": {
@@ -505,7 +505,7 @@ client.on("raw", async e => {
           break;
         }
       }
-    } else if (e.d.message_id == "697261271552360538") {
+    } else if (e.d.message_id == "824375562293739582") {
       let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
       console.log(e.d.emoji.name);
       switch (e.d.emoji.name) {
@@ -563,19 +563,19 @@ async function att(){
 
   client.guilds.cache
     .get(idGuild)
-    .channels.cache.get("697806708226916352")
+    .channels.cache.get("823169085231726602")
     .setName("👤| Usuários: " + usu);
   client.guilds.cache
     .get(idGuild)
-    .channels.cache.get("697806938683080765")
+    .channels.cache.get("823169085231726602")
     .setName("💻| Info: " + info);
   client.guilds.cache
     .get(idGuild)
-    .channels.cache.get("697807011160522772")
+    .channels.cache.get("823169085231726602")
     .setName("📊| Adm: " + adm);
   client.guilds.cache
     .get(idGuild)
-    .channels.cache.get("697807072255016960")
+    .channels.cache.get("823169085231726602")
     .setName("👚| Vest: " + vest);
 }
 
