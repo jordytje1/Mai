@@ -372,12 +372,12 @@ const conftig = {
     ]
 }
 
-cient.on("ready", () => {
+client.on("ready", () => {
     console.log("BOT IS READY" + client.user.tag)
     cient.user.setActivity("APPLY NOW IN | APPLY HERE", {type: "WATCHING"})
 })
 
-cient.on("message", (message)=>{
+client.on("message", (message)=>{
     if(message.author.bot || !message.guild) return;
     if(!message.content.startsWith(conftig.prefix)) return;
     let args = message.content.slice(conftig.prefix.length).split(" ");
@@ -400,7 +400,7 @@ cient.on("message", (message)=>{
     }
 });
 
-cient.on("messageReactionAdd", async (reaction, user) => {
+client.on("messageReactionAdd", async (reaction, user) => {
     const { message } = reaction;
     if(user.bot || !message.guild) return;
     if(message.partial) await message.fetch();
