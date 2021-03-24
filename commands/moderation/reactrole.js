@@ -20,9 +20,7 @@ module.exports = {
  
   
   run: async (client, message, args, settings) => {
-      const prefix = !
-    if (args.length < 1)
-            return message.channel.send('You must specify something for the bot to repeat!').then(m => m.delete({timeout: 5000}));
+      
     if (args[0].toLowerCase() === 'embed') {
         const rrCreateDescription = new MessageEmbed()
             .setTitle(`Sous commande : ${settings.prefix}reaction-role add`)
