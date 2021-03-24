@@ -478,8 +478,8 @@ client.on("raw", async e => {
     if (e.d.message_id == idMsg) {
       switch (e.d.emoji.name) {
         case "💻": {
-          member.addRole(cargoInfo);
-          member.addRole(cargoMembro);
+          member.roles.add(cargoInfo);
+          member.roles.add(cargoMembro);
           break;
         }
         case "📊": {
@@ -518,7 +518,7 @@ client.on("raw", async e => {
           break;
         }
         case "3️⃣": {
-          member.addRole(cargo3);
+          member.roles.add(cargo3);
           break;
         }
       }
