@@ -21,11 +21,6 @@ module.exports = {
     if (!guild){
       return message.channel.send(`\\❌ | ${message.author}, guild **${id}** does not exist on your cache`)
     };
-
-    return guild.channels.cache.filter(c =>
-      c instanceof TextChannel &&
-      c.permissionsFor(client.user.me)
-      .has([ 'VIEW_CHANNEL','SEND_MESSAGES' ]
     )).send(
       new MessageEmbed()
       .setColor('RED')
