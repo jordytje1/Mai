@@ -27,7 +27,7 @@ module.exports = {
       c instanceof TextChannel &&
       c.permissionsFor(client.user.me))
       guild.me.hasPermission([ 'VIEW_CHANNEL','SEND_MESSAGES' ]
-    )).send(
+    .send(
       new MessageEmbed()
       .setColor('RED')
       .setTitle(`👋 My developer has requested that I leave ${guild.name}!`)
