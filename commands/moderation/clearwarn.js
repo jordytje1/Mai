@@ -74,5 +74,4 @@ module.exports = {
 		.addField("Result:", reason, true);
 	message.channel.send({ embed });
 }
-	}
-}
+       }
