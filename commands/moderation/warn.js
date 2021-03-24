@@ -158,5 +158,6 @@ module.exports = {
 	if (warns[`${user.id}, ${message.guild.id}`].warns == 5) {
 		message.guild.member(user).ban(reason);
 		message.channel.send(test3);
-	}
 }
+	}
+};
