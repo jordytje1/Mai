@@ -21,7 +21,6 @@ module.exports = {
   
   run: async (client, message, args, settings) => {
     
-    const command = args.shift().toLowerCase();
     if(args.shift().toLowerCase() === 'add'){
         const rrCreateDescription = new MessageEmbed()
             .setTitle(`Sous commande : ${settings.prefix}reaction-role add`)
