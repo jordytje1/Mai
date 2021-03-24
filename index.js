@@ -355,8 +355,8 @@ const conftig = {
     "prefix": "!",
    
    
-    "apply_channel_id": "806076986430193685",
-    "finished_applies_channel_id": "806077012493729813",
+    "apply_channel_id": "823169018042122260",
+    "finished_applies_channel_id": "823169018042122260",
     
     
     "QUESTIONS": [
