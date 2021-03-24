@@ -350,71 +350,103 @@ cllient.on('messageReactionRemove', async (reaction, user) => {
         });
 });
 
+const Discord = require("discord.js");
 
-let userApplications = {}
+const cient = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION"]});
+const conftig = {
+    "prefix": "!",
+   
+   
+    "apply_channel_id": "806076986430193685",
+    "finished_applies_channel_id": "806077012493729813",
+    
+    
+    "QUESTIONS": [
+        "Question 1",
+        "Question 2",
+        "Question 3",
+        "Question 4",
+        "Question 5",
+        "Question 6",
+        "Question 7",
+        "Question 8",
+        "Question 9"
+    ]
+}
 
-client.on("message", function(message) {
-  if (message.author.equals(client.user)) return;
+cient.on("ready", () => {
+    console.log("BOT IS READY" + client.user.tag)
+    cient.user.setActivity("APPLY NOW IN | APPLY HERE", {type: "WATCHING"})
+})
 
-  let authorId = message.author.id;
+cient.on("message", (message)=>{
+    if(message.author.bot || !message.guild) return;
+    if(!message.content.startsWith(conftig.prefix)) return;
+    let args = message.content.slice(conftig.prefix.length).split(" ");
+    let cmd = args.shift();
 
-  if (message.content === "%apply") {
-      console.log(`Apply begin for authorId ${authorId}`);
-      // User is not already in a registration process 
-	  
-      if (!(authorId in userApplications)) {
-          userApplications[authorId] = { "step" : 1}
-
-          message.author.send("```We need to ask some questions so  we can know a litte bit about yourself```");
-          message.author.send("```Application Started - Type '#Cancel' to cancel the application```");
-          message.author.send("```Question 1: In-Game Name?```");
-      }
-
-  } else {
-
-      if (message.channel.type === "dm" && authorId in userApplications) {
-          let authorApplication = userApplications[authorId];
-
-          if (authorApplication.step == 1 ) {
-              authorApplication.answer1 = message.content;
-              message.author.send("```Question 2: Age?```");
-              authorApplication.step ++;
-          }
-          else if (authorApplication.step == 2) {
-		   authorApplication.answer2 = message.content;
-              message.author.send("```Question 3: Timezone? NA, AU, EU, NZ, or Other? (If other, describe your timezone)```");
-              authorApplication.step ++;
-          }
-          else if (authorApplication.step == 3) {
-		   authorApplication.answer3 = message.content;
-              message.author.send("```Question 4: Do you have schematica?```");
-              authorApplication.step ++;
-          }
-
-          else if (authorApplication.step == 4) {
-		   authorApplication.answer4 = message.content;
-              message.author.send("```Thanks for your registration. Type %apply to register again```");
-              delete userApplications[authorId];
-    let applystaff = new MessageEmbed()
-    .setTitle('apply')
-    .setThumbnail(message.author.avatarURL())
-    .addFields(
-		{ name: 'Question 1: In-Game Name?', value: `${authorApplication.answer1}` },
-		{ name: 'Question 2: Age?', value: `${authorApplication.answer2}` },
-		{ name: 'Question 3: Timezone? NA, AU, EU, NZ, or Other? (If other, describe your timezone', value: `${authorApplication.answer3}` },
-		{ name: 'Question 4: Do you have schematica?', value: `${authorApplication.answer4}` },
-	)
-    .setColor("#ff2509")
-    .setFooter(`Requested`)
-    .setTimestamp()
-		  client.channels.cache.get('752211513401671763').send(applystaff);
-          }
-
-      }
-  }
-
-
+    if(cmd === "embed"){
+        console.log(args)
+        let newargs = args.join(" ").split("+")
+        console.log(newargs)
+        message.channel.send(
+            new Discord.MessageEmbed()
+            .setColor("RED")
+            .setTitle(newargs[0] ? newargs[0] : "")
+            .setDescription(newargs.slice(1).join(" ") ? newargs.slice(1).join(" ") : "")
+            .setFooter("React with the granted emoji!")
+        )
+    }
+    else if (cmd === "react"){
+        message.channel.messages.fetch(args[0]).then(msg => msg.react(args[1]));
+    }
 });
+
+cient.on("messageReactionAdd", async (reaction, user) => {
+    const { message } = reaction;
+    if(user.bot || !message.guild) return;
+    if(message.partial) await message.fetch();
+    if(reaction.partial) await reaction.fetch();
+    
+    if(message.guild.id === "734869150240866484" && message.channel.id === conftig.apply_channel_id && (reaction.emoji.name === "✅" || reaction.emoji.id === "653206656179503104")){
+        let guild = await message.guild.fetch();
+        let channel_tosend = guild.channels.cache.get(conftig.finished_applies_channel_id);
+        if(!channel_tosend) return console.log("RETURN FROM !CHANNEL_TOSEND");
+        const answers = [];
+        let counter = 0;
+
+        ask_question(conftig.QUESTIONS[counter]);
+
+        function ask_question(qu){
+            if(counter === conftig.QUESTIONS.length) return send_finished();
+            user.send(qu).then(msg => {
+                msg.channel.awaitMessages(m=>m.author.id === user.id, {max: 1, time: 60000, errors: ["time"]}).then(collected => {
+                    answers.push(collected.first().content);
+                    ask_question(conftig.QUESTIONS[++counter]);
+                })
+            })
+        }
+        function send_finished(){
+            let embed = new Discord.MessageEmbed()
+            .setColor("RED")
+            .setTitle("A new application from: " + user.tag) //Tomato#6966
+            .setDescription(`${user}  |  ${new Date()}`)
+            .setFooter(user.id, user.displayAvatarURL({dynamic:true}))
+            .setTimestamp()
+            for(let i = 0; i < conftig.QUESTIONS.length; i++){
+                try{
+                    embed.addField(conftig.QUESTIONS[i], String(answers[i]).substr(0, 1024))
+                }catch{
+                }
+            }
+            channel_tosend.send(embed);
+            user.send("Thanks for applying to: " + message.guild.name)
+        }
+        
+
+    }
+
+})
 
 
 client.login();
