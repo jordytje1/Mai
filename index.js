@@ -396,7 +396,7 @@ client.on("message", (message)=>{
         )
     }
     else if (cmd === "react"){
-        message.channel.messages.fetch(args[0]).then(msg => msg.react(args[1]));
+        message.channel.messages.fetch(args[0]).then(msg => message.react(args[1]));
     }
 });
 
