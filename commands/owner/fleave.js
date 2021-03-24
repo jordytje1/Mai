@@ -26,7 +26,7 @@ module.exports = {
     return guild.channels.cache.filter(c =>
       c instanceof TextChannel &&
       c.permissionsFor(client.user.me))
-      if.guild.me.hasPermission([ 'VIEW_CHANNEL','SEND_MESSAGES' ]
+      guild.me.hasPermission([ 'VIEW_CHANNEL','SEND_MESSAGES' ]
     )).send(
       new MessageEmbed()
       .setColor('RED')
