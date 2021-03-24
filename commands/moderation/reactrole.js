@@ -17,10 +17,12 @@ module.exports = {
     permissions: false,
     args: true,
     sousCommdandes : ["rr add","rr rem"],
-
+ 
   
   run: async (client, message, args, settings) => {
-    if(args[0].toLowerCase() === 'add'){
+    
+    const command = args.shift().toLowerCase();
+    if(args.shift().toLowerCase() === 'add'){
         const rrCreateDescription = new MessageEmbed()
             .setTitle(`Sous commande : ${settings.prefix}reaction-role add`)
             .setColor(client.config.color.EMBEDCOLOR)
