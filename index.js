@@ -350,8 +350,6 @@ cllient.on('messageReactionRemove', async (reaction, user) => {
         });
 });
 
-const Discord = require("discord.js");
-
 const cient = new Discord.Client({partials: ["MESSAGE", "CHANNEL", "REACTION"]});
 const conftig = {
     "prefix": "!",
