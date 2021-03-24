@@ -34,6 +34,6 @@ module.exports = {
       .setDescription(`Reason:\n${reason.join(' ') || 'Unspecified'}`)
     ).then(() => guild.leave())
     .then(() => message.channel.send(`\\✔️ Sucessfully left the guild **${guild.name}**`))
-    .catch(() => message.channel.send(`\\❗ Could not perform the operation.`));
+    .catch(() => message.channel.send(`\\❗ Could not perform the operation.`)));
   }
 };
