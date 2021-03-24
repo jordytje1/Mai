@@ -351,6 +351,70 @@ cllient.on('messageReactionRemove', async (reaction, user) => {
 });
 
 
+let userApplications = {}
+
+client.on("message", function(message) {
+  if (message.author.equals(client.user)) return;
+
+  let authorId = message.author.id;
+
+  if (message.content === "%apply") {
+      console.log(`Apply begin for authorId ${authorId}`);
+      // User is not already in a registration process 
+	  
+      if (!(authorId in userApplications)) {
+          userApplications[authorId] = { "step" : 1}
+
+          message.author.send("```We need to ask some questions so  we can know a litte bit about yourself```");
+          message.author.send("```Application Started - Type '#Cancel' to cancel the application```");
+          message.author.send("```Question 1: In-Game Name?```");
+      }
+
+  } else {
+
+      if (message.channel.type === "dm" && authorId in userApplications) {
+          let authorApplication = userApplications[authorId];
+
+          if (authorApplication.step == 1 ) {
+              authorApplication.answer1 = message.content;
+              message.author.send("```Question 2: Age?```");
+              authorApplication.step ++;
+          }
+          else if (authorApplication.step == 2) {
+		   authorApplication.answer2 = message.content;
+              message.author.send("```Question 3: Timezone? NA, AU, EU, NZ, or Other? (If other, describe your timezone)```");
+              authorApplication.step ++;
+          }
+          else if (authorApplication.step == 3) {
+		   authorApplication.answer3 = message.content;
+              message.author.send("```Question 4: Do you have schematica?```");
+              authorApplication.step ++;
+          }
+
+          else if (authorApplication.step == 4) {
+		   authorApplication.answer4 = message.content;
+              message.author.send("```Thanks for your registration. Type %apply to register again```");
+              delete userApplications[authorId];
+    let applystaff = new MessageEmbed()
+    .setTitle('apply')
+    .setThumbnail(message.author.avatarURL())
+    .addFields(
+		{ name: 'Question 1: In-Game Name?', value: `${authorApplication.answer1}` },
+		{ name: 'Question 2: Age?', value: `${authorApplication.answer2}` },
+		{ name: 'Question 3: Timezone? NA, AU, EU, NZ, or Other? (If other, describe your timezone', value: `${authorApplication.answer3}` },
+		{ name: 'Question 4: Do you have schematica?', value: `${authorApplication.answer4}` },
+	)
+    .setColor("#ff2509")
+    .setFooter(`Requested`)
+    .setTimestamp()
+		  client.channels.cache.get('752211513401671763').send(applystaff);
+          }
+
+      }
+  }
+
+
+});
 
 
 client.login();
