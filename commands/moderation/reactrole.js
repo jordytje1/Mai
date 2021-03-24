@@ -24,7 +24,7 @@ module.exports = {
     if (args[0].toLowerCase() === 'embed') {
         const rrCreateDescription = new MessageEmbed()
             .setTitle(`Sous commande : !reaction-role add`)
-            .setColor(client.configg.color.EMBEDCOLOR)
+            .setColor("#ff2509")
             .setDescription(`**Module :** Manangement\n**Description :** Permet de crée un role-reaction sous un message.\n**Usage :** [channel] [message_ID] [emoi] [role]\n**Exemples :** \n !role-reaction add 716993025678639124 728683365712265257 <:Z6158981175244605Z6:713121641701572698> @Update`)
             .setFooter('BOT ID : 689210215488684044')
             .setTimestamp()
@@ -91,7 +91,7 @@ module.exports = {
             try{
             const rrDeleteDescription = new MessageEmbed()
             .setTitle(`Sous commande : ${settings.prefix}reaction-role rem`)
-            .setColor(client.configg.color.EMBEDCOLOR)
+            .setColor("#ff2509")
             .setDescription(`**Module :** Manangement\n**Description :** Permet de crée un role-reaction sous un message.\n**Usage :** [channel] [message_ID] [emoi] [role]\n**Exemples :** \n !role-reaction rem 716993025678639124 728683365712265257 <:Z6158981175244605Z6:713121641701572698> @Update`)
             .setFooter('BOT ID : 689210215488684044')
             .setTimestamp()
