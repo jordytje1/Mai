@@ -159,4 +159,4 @@ module.exports = {
 		message.guild.member(user).ban(reason);
 		message.channel.send(test3);
 	}
-};
+}
