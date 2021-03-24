@@ -526,6 +526,63 @@ client.on("raw", async e => {
   }
 });
 
+client.on("raw", async e => {
+  if (e.t == "MESSAGE_REACTION_REMOVE") {
+    let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
+    if (e.d.message_id == idMsg) {
+      switch (e.d.emoji.name) {
+        case "💻": {
+          member.roles.remove(cargoInfo);
+          member.roles.remove(cargoMembro);
+          break;
+        }
+        case "📊": {
+          member.addRole(cargoAdm);
+          member.addRole(cargoMembro);
+          break;
+        }
+        case "👚": {
+          member.addRole(cargoVest);
+          member.addRole(cargoMembro);
+          break;
+        }
+      }
+    } else if (e.d.message_id == "824375562293739582") {
+      let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
+      switch (e.d.emoji.name) {
+        case "🇺🇸": {
+          member.addRole(cargoIngles);
+          break;
+        }
+        case "🇪🇸": {
+          member.addRole(cargoEspanhol);
+          break;
+        }
+      }
+    } else if (e.d.message_id == "824375562293739582") {
+      let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
+      console.log(e.d.emoji.name);
+      switch (e.d.emoji.name) {
+        case "1️⃣": {
+          member.addRole(cargo1);
+          break;
+        }
+        case "2️⃣": {
+          member.addRole(cargo2);
+          break;
+        }
+        case "3️⃣": {
+          member.roles.add(cargo3);
+          break;
+        }
+      }
+    }
+  }
+});
+
+
+
+
 client.on("guildMemberAdd", member => {
   return att();
 });
