@@ -118,4 +118,3 @@ module.exports = {
                 else return message.channel.send(`${client.config.emojis.error}Une erreur s'est produite. Merci de vérifiez les paramètres de la commande.`);
 }
 	}
-};
