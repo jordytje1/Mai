@@ -9,8 +9,8 @@ const types =  [ 'TV', 'ONA', 'OVA', 'Movie', 'Special', '-' ];
 
 module.exports = {
   name: 'upcoming',
-  ownerOnly: true,
   aliases: [  ],
+  ownerOnly: true,
   guildOnly: true,
   clientPermissions: [ 'EMBED_LINKS' , 'ADD_REACTIONS' , 'USE_EXTERNAL_EMOJIS' ],
   cooldown: {
