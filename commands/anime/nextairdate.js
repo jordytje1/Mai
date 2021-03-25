@@ -9,9 +9,9 @@ const withoutQuery = requireText('../../assets/graphql/AirDateNoQuery.graphql', 
 module.exports = {
   name: 'nextairdate',
   aliases: [ 'nextairing', 'nextair', 'nextep', 'nextepisode' ],
+  ownerOnly: true,
   cooldown: {
     time: 10000,
-    ownerOnly: true,
     message: 'You are going too fast! Please slow down to avoid being rate-limited!'
   },
   clientPermissions: [ 'EMBED_LINKS' ],
