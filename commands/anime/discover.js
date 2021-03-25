@@ -27,7 +27,7 @@ module.exports = {
     .setAuthor('Unrecognized Category!','https://cdn.discordapp.com/emojis/767062250279927818.png?v=1')
     .setThumbnail('https://i.imgur.com/qkBQB8V.png')
     .setColor('RED')
-    .setFooter(`Discover | \©️${new Date().getFullYear()} Mai`);
+    .setFooter(`Discover | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`);
 
     if (!category || !['anime','manga'].includes(category)){
       return message.channel.send(embed);
