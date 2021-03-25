@@ -15,7 +15,7 @@ module.exports = {
     new MessageEmbed()
     .setColor('GREY')
     .setAuthor(`💮 ${message.guild.name} Roles List`)
-    .setFooter(`Listrole | \©️${new Date().getFullYear()} Mai`)
+    .setFooter(`Listrole | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     .addFields(
       _.chunk(message.guild.roles.cache.array()
         .filter(x => x.id !== message.guild.id)
