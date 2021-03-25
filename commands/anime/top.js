@@ -132,7 +132,7 @@ module.exports = {
           value: info.start_date,
           inline: true
         }
-      ]).setFooter(`Top ${type.charAt(0).toUpperCase() + type.slice(1)} | \©️${new Date().getFullYear()} Mai`)
+      ]).setFooter(`Top ${type.charAt(0).toUpperCase() + type.slice(1)} | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
 
       if (type === 'characters'){
         embed.spliceFields(3,5)
