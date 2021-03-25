@@ -22,6 +22,14 @@ module.exports = {
                 .setFooter(`Requested by ${message.author.tag} `)
                 .setTimestamp()
             
+            if (args[0].toLowerCase() === 'normal embed') {
+            const embed = new MessageEmbed()
+                .setTitle('Message')
+                .setColor("#00c1ff")
+                .setDescription(args.slice(1).join(' '))
+                .setFooter(`Requested by ${message.author.tag} `)
+                .setTimestamp()
+            
             message.channel.send(embed);
         } else {
             message.channel.send(args.join(' '));
