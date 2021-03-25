@@ -32,7 +32,7 @@ module.exports = {
 
     const embed = new MessageEmbed()
     .setColor('RED')
-    .setFooter(`Anischedule Watchlist | \©️${new Date().getFullYear()} Mai`)
+    .setFooter(`Anischedule Watchlist | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
 
     const anischedch = message.guild.channels.cache.get(doc.channelID);
 
