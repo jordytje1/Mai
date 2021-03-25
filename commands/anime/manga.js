@@ -9,6 +9,7 @@ module.exports = {
   name: "manga",
   aliases: [ 'comic', 'manhwa', 'manhua' ],
   guildOnly: true,
+  ownerOnly: true,
   cooldown: {
     time: 10000,
     message: 'Oops! You are going too fast! Please slow down to avoid being rate-limited!'
