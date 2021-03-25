@@ -7,6 +7,7 @@ const text = require('../../util/string');
 
 module.exports = {
   name: 'alprofile',
+  ownerOnly: true,
   aliases: [ 'al-of', 'alof', 'alstat', 'aluser' ],
   cooldown: { time: 10000 },
   clientPermissions: [ 'EMBED_LINKS' ],
