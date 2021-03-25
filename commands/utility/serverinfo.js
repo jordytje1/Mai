@@ -15,7 +15,7 @@ module.exports = {
     new MessageEmbed()
     .setColor('GREY')
     .setAuthor(`♨️ ${message.guild.name} Server Information`, message.guild.iconURL())
-    .setFooter(`Server | ©️${new Date().getFullYear()} Mai`)
+    .setFooter(`Server | ©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     .addFields([
       {
         name: '__**SERVER**__', inline: true,
