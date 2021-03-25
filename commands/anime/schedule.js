@@ -10,6 +10,7 @@ module.exports = {
   name: 'schedule',
   aliases: [ 'anitoday' , 'airinglist' , 'airing' ],
   guildOnly: true,
+  ownerOnly: true,
   cooldown: {
     time: 60000
     , message: 'You are going too fast! Please slow down to avoid being rate-limited!'
