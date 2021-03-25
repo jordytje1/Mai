@@ -80,7 +80,7 @@ module.exports = {
     .setThumbnail(res.image_url)
     .setColor('GREY')
     .setDescription(text.truncate(res.about.replace(/\\n/g,''),500,`... [Read More](${res.url})`))
-    .setFooter(  `Character Query with MAL | \©️${new Date().getFullYear()} Mai`)
+    .setFooter(  `Character Query with MAL | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     .addFields([
       ...['Anime', 'Manga'].map(media => {
         const store = mediastore[media.toLowerCase()];
