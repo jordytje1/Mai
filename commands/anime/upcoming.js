@@ -39,7 +39,7 @@ module.exports = {
     .setColor('YELLOW')
     .setThumbnail('https://i.imgur.com/u6ROwvK.gif')
     .setDescription(`\u200B\n Fetching upcoming **${type || ' '}** anime from <:mal:767062339177676800> [MyAnimeList](https://myanimelist.net 'MyAnimeList Homepage').\n\u200B`)
-    .setFooter(`Upcoming Anime Query with MAL\u2000|\u2000\©️${new Date().getFullYear()} Mai`)
+    .setFooter(`Upcoming Anime Query with MAL\u2000|\u2000\©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
 
     let msg = await message.channel.send(embed);
 
@@ -84,7 +84,7 @@ module.exports = {
         .setFooter([
           `Upcoming Anime Query with MAL`,
           `Page ${index + 1} of ${descriptions.length}`,
-          `\©️${new Date().getFullYear()} Mai`
+          `\©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`
         ].join('\u2000|\u2000'))
       );
       index++;
