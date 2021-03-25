@@ -64,7 +64,7 @@ module.exports = {
             'there are no rewards implemented for voting, but is subject to change.'
           ].join(' ')
         },
-      ]).setFooter(`Support | \©️${new Date().getFullYear()} Mai`)
+      ]).setFooter(`Support | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     )
   }
 }
