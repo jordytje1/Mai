@@ -66,7 +66,7 @@ module.exports = {
       .setColor(res.sort((A,B) => B.id - A.id)[0].coverImage.color)
       .setThumbnail(res.sort((A,B) => B.id - A.id)[0].coverImage.large)
       .setAuthor('Removing from watchlist')
-      .setFooter(`Unwatch | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Unwatch | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       .addFields(res.splice(0,25).sort((A,B) => B.id - A.id).map(entry => {
         const mediatitle = entry.title.romaji || entry.title.english || entry.title.native;
         const name = '\u200b';
