@@ -42,7 +42,7 @@ module.exports = {
       .setAuthor(`Discord user ${user.tag}`, null, 'https://discord.com/')
       .setDescription(userFlags.join(' '))
       .setThumbnail(user.displayAvatarURL({format: 'png', dynamic: true}))
-      .setFooter(`Userinfo | ©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Userinfo | ©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       .addFields([
         { name: 'Username', value: `**${user.username}**#${user.discriminator}`, inline: true },
         { name: 'Type', value: user.bot ? 'Bot' : 'User', inline: true },
