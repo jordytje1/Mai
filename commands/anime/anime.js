@@ -71,7 +71,7 @@ module.exports = {
       .setColor(isHentai ? 'RED' : 'GREY')
       .setURL(data.url)
       .setThumbnail(data.picture || null)
-      .setFooter(`Anime Query with MAL | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Anime Query with MAL | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       .setTitle(text.truncate(data.englishTitle || data.title, 200))
       .setDescription([
         [
