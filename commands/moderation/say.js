@@ -15,7 +15,7 @@ module.exports = {
             
          if (args[0].toLowerCase() === 'embed') {
             const embed = new MessageEmbed()
-                .setTitle('Message')
+                .setTitle('')
                 .setColor("#00c1ff")
                 .setDescription(args.slice(1).join(' '))
                 .setFooter(`Requested by ${message.author.tag} `)
