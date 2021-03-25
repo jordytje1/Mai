@@ -10,6 +10,7 @@ module.exports = {
   name: 'discover',
   aliases: [],
   guildOnly: true,
+  ownerOnly: true,
   group: 'anime',
   description: 'Generate a set of handpicked <Anime/Manga> recommendations for a user.',
   clientPermissions: [ 'EMBED_LINKS', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS' ],
