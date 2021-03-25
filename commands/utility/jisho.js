@@ -56,7 +56,7 @@ module.exports = {
       .setColor('GREY')
       .addFields(fields)
       .setAuthor(`🇯🇵 • Search Results for ${query}!`)
-      .setFooter(`Jisho @ Jisho.org | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Jisho @ Jisho.org | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       .addField('\u200b',`[External Link](https://jisho.org/search/${query} '${query} on Jisho')`)
     );
   }
