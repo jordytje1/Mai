@@ -31,7 +31,7 @@ module.exports = {
     .setColor('YELLOW')
     .setDescription(`Searching for manga titled **${query}** on <:mal:767062339177676800> [MyAnimeList](https://myanimelist.net 'Homepage').`)
     .setThumbnail('https://i.imgur.com/u6ROwvK.gif')
-    .setFooter(`Manga Query with MAL | \©️${new Date().getFullYear()} Mai`);
+    .setFooter(`Manga Query with MAL | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`);
 
     let msg = await message.channel.send(embed);
 
