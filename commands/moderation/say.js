@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'say',
     category: 'general',
+    ownerOnly: true,
     description: 'Bot repeats what you tell it to.',
     usage: `say`,
     run: (client, message, args) => {
