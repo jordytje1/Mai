@@ -19,7 +19,7 @@ module.exports = {
 
     const { exceptions, isActive } = client.guildProfiles.get(message.guild.id).xp;
     const embed = new MessageEmbed()
-    .setFooter(`XP Leaderboard | \©️${new Date().getFullYear()} Mai`)
+    .setFooter(`XP Leaderboard | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     .setThumbnail('https://i.imgur.com/qkBQB8V.png')
     .setColor('RED');
 
@@ -78,7 +78,7 @@ module.exports = {
       return message.channel.send(
         new MessageEmbed()
         .setColor('GREY')
-        .setFooter(`Credits Leaderboard | \©️${new Date().getFullYear()} Mai`)
+        .setFooter(`Credits Leaderboard | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
         .setAuthor(`🏆 ${message.guild.name} Credits Leaderboard`, message.guild.iconURL({format: 'png', dynamic: true }) || null)
         .addField(`**${members.get(docs[0].id)?.displayName || '<Unknown User>'}** ranked the highest with **${text.commatize(docs[0].wallet + docs[0].bank)} **Credits!`,
         [
