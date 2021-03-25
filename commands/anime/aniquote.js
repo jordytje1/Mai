@@ -4,6 +4,7 @@ const { searchAnime } = require('node-kitsu');
 
 module.exports = {
   name: "aniquote",
+  ownerOnly: true,
   aliases: [ 'aq', 'animequote' ],
   group: 'anime',
   clientPermissions: [ 'EMBED_LINKS' ],
