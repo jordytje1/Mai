@@ -28,7 +28,7 @@ module.exports = {
       .setColor('GREY')
       .setTitle('Mai\'s Market')
       .setDescription('You can view all of the items in the market at once on https://market.mai-san.ml/')
-      .setFooter(`Market | \©️${new Date().getFullYear()} Mai\u2000\u2000•\u2000\u2000Page ${i+1} of ${o.length}`)
+      .setFooter(`Market | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241\u2000\u2000•\u2000\u2000Page ${i+1} of ${o.length}`)
       .addFields(...chunk.map(item => {
         return {
           inline: true,
