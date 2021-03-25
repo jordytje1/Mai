@@ -29,7 +29,7 @@ module.exports = {
         .setAuthor("Music Queue Cleared")
         .setColor(`#ffb6c1`)
         .setDescription(`Yay! Don't forget to [vote for me](${client.config.websites['top.gg']})`)
-        .setFooter(`Music System | \©️${new Date().getFullYear()} Mai`)
+        .setFooter(`Music System | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       );
     };
   }
