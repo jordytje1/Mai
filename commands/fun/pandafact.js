@@ -27,7 +27,7 @@ module.exports = {
       .setThumbnail('https://i.imgur.com/QUF4VQX.gif')
       .setColor('GREY')
       .setDescription(data.fact)
-      .setFooter(`Pandafact | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Pandafact | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   }
 };
