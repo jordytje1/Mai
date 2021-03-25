@@ -55,7 +55,7 @@ module.exports = {
       }
     })
   ).addField('\u200b', `*“${response()}”*`)
-  .setFooter(`Pings | \©️${new Date().getFullYear()} Mai`);
+  .setFooter(`Pings | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`);
 
     return await prompt.edit('',embed).catch(() => null) || message.channel.send(embed);
   }
