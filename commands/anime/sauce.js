@@ -55,7 +55,7 @@ module.exports = {
 
     const embed = new MessageEmbed()
     .setColor('GREY')
-    .setFooter(`Doujin Query | \©️${new Date().getFullYear()} Mai`)
+    .setFooter(`Doujin Query | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     .setAuthor(pretty, null, `https://nhentai.net/g/${id}`)
     .setDescription(`**${book.title.english}**\n*${book.title.japanese}*`)
     .setThumbnail(api.getImageURL(cover))
