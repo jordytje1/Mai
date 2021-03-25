@@ -8,6 +8,7 @@ const text = require('../../util/string');
 
 module.exports = {
   name: 'anime',
+  ownerOnly: true,
   aliases: [ 'ani', 'as', 'anisearch'],
   cooldown: {
     time: 10000,
