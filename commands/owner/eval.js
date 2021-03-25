@@ -61,7 +61,7 @@ module.exports = {
       .setFooter([
         `Type: ${type}`,
         `Evaluated in ${elapsed}ms.`,
-        `Eval | \©️${new Date().getFullYear()} Mai`].join('\u2000•\u2000')
+        `Eval | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`].join('\u2000•\u2000')
       );
 
       if (output.length > 1000){
@@ -110,7 +110,7 @@ module.exports = {
         .setFooter([
           `${err.name}`,
           `Evaluated in ${Math.abs(Date.now() - message.createdTimestamp)}ms.`,
-          `Eval | \©️${new Date().getFullYear()} Mai`].join('\u2000•\u2000'))
+          `Eval | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`].join('\u2000•\u2000'))
         .addFields([
           { name: '\\📥 Input', value: `\`\`\`js\n${text.truncate(text.clean(args.join(' ')),1000,'\n...')}\`\`\``  },
           { name: '\\📤 Output', value }
