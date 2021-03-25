@@ -31,7 +31,7 @@ module.exports = {
     const { errors , data } = await client.anischedule.fetch(`query ($id: Int) { Media(id: $id){ siteUrl id idMal isAdult format startDate { year month day } chapters volumes genres studios(isMain:true){ nodes{ name siteUrl } } coverImage{ large color } description title { romaji english native userPreferred } } }`, { id });
 
     const embed = new MessageEmbed().setColor('RED')
-    .setFooter(`Random Recommendations | \©️${new Date().getFullYear()} Mai`);
+    .setFooter(`Random Recommendations | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`);
 
     // If errored due to ratelimit error
     if (errors && errors.some(x => x.status === 429)){
