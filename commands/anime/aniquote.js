@@ -24,7 +24,7 @@ module.exports = {
       .addField(`*Quoted from ${anime}*`,`${quote}\n\n-*${name}*`)
       .setImage(image)
       .setTimestamp()
-      .setFooter(`Anime Quotes | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Anime Quotes | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   }
 };
