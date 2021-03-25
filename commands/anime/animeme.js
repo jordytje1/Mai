@@ -4,8 +4,8 @@ const text = require('../../util/string');
 
 module.exports = {
   name: 'animeme',
-  ownerOnly: true,
   aliases: [ 'ameme' , 'animememe' , 'animemes' , 'animememes' , 'amemes' ],
+  ownerOnly: true,
   guildOnly: true,
   group: 'anime',
   clientPermissions: [ 'EMBED_LINKS' ],
