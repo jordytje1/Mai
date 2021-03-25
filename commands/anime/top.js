@@ -9,6 +9,7 @@ module.exports = {
   name: 'top',
   aliases: [],
   guildOnly: true,
+  ownerOnly: true,
   group: 'anime',
   description: 'Shows top anime (\\🛠️ currently broken)',
   clientPermissions: [ 'EMBED_LINKS' ],
