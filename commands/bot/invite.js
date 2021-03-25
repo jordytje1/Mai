@@ -79,7 +79,7 @@ module.exports = {
           value: 'https://support.mai-san.ml'
         }
       ])
-      .setFooter(`Invite Links | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Invite Links | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   }
 };
