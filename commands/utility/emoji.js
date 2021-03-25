@@ -20,7 +20,7 @@ module.exports = {
       new MessageEmbed()
       .setColor('GREY')
       .setImage('https://cdn.discordapp.com/emojis/' + emoji.match(/\d{17,19}/)[0])
-      .setFooter(`Emoji: ${emoji.match(/\w{2,32}/)[0]} | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Emoji: ${emoji.match(/\w{2,32}/)[0]} | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   }
 };
