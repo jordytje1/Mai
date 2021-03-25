@@ -9,6 +9,7 @@ const text = require('../../util/string');
 
 module.exports = {
   name: 'hanime',
+  ownerOnly: true,
   aliases: [ 'searchhentai', 'hanisearch', 'hs' ],
   cooldown: {
     time: 10000,
