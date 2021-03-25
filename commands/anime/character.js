@@ -8,6 +8,7 @@ const badge = '<:mal:767062339177676800> [MyAnimeList](https://myanimelist.net \
 
 module.exports = {
   name: 'character',
+  ownerOnly: true,
   aliases: [ 'anichar' , 'char' , 'c' ],
   cooldown: {
     time: 10000,
