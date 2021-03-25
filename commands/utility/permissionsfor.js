@@ -32,7 +32,7 @@ module.exports = {
       new MessageEmbed()
       .setColor(member.displayColor || 'GREY')
       .setTitle(`${member.displayName}'s Permissions`)
-      .setFooter(`Permissions | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Permissions | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       .setDescription([
         '\\♨️ - This Server',
         '\\#️⃣ - The Current Channel',
