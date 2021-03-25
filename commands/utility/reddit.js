@@ -21,7 +21,7 @@ module.exports = {
     .setColor('YELLOW')
     .setThumbnail('https://i.imgur.com/u6ROwvK.gif')
     .setDescription(`\u200B\nFetching information from <:reddit:767062345422864394> **[r/${subreddit}](https://reddit.com/r/${subreddit})**. Please Wait.`)
-    .setFooter(`Reddit Image | \©️${new Date().getFullYear()} Mai`);
+    .setFooter(`Reddit Image | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`);
 
     const prompt = await message.channel.send(embed);
     let res = await fetch(`https://reddit.com/r/${subreddit}.json`)
