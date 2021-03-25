@@ -6,8 +6,8 @@ const api = new API();
 
 module.exports = {
   name: 'sauce',
-  ownerOnly: true,
   aliases: [ 'gimmesauce', 'finddoujin', 'doujin', 'nhentai', 'saucefor' ],
+  ownerOnly: true,
   guildOnly: true,
   cooldown: {
     time: 30000
