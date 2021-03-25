@@ -53,7 +53,7 @@ module.exports = {
       ).setAuthor(`${message.author.tag}'s wallet`)
       .setColor('GREY')
       .setThumbnail(message.author.displayAvatarURL({dynamic: 'true'}))
-      .setFooter(`Profile Balance | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Profile Balance | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   })
 };
