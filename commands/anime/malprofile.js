@@ -10,6 +10,7 @@ module.exports = {
   cooldown: { time: 10000 },
   clientPermissions: [ 'EMBED_LINKS' ],
   group: 'anime',
+  ownerOnly: true,
   description: 'Finds user profile on myanimelist based on the provided query.',
   parameters: [ 'Myanimelist Username' ],
   examples: [
