@@ -33,7 +33,7 @@ module.exports = {
     .setFooter([
       `❣️${(100 * (((1 - waifu.statistics.hate / (waifu.statistics.love + waifu.statistics.fav)) * 0.6) + ((waifu.statistics.upvote / (waifu.statistics.upvote + waifu.statistics.downvote)) * 0.4))).toFixed(2)}`,
       `${ no + 1 } of ${ waifu.images.length }`,
-      `\©️${new Date().getFullYear()} Mai`
+      `\©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`
     ].join('\u2000|\u2000'));
 
     return message.channel.send(embed).then( m => m.react('💖')).then(() => message.channel.stopTyping())
