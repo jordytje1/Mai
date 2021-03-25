@@ -36,7 +36,7 @@ module.exports = {
     .setColor('YELLOW')
     .setThumbnail('https://i.imgur.com/u6ROwvK.gif')
     .setDescription(`Searching for **${id}** on <:nhentai:767062351169323039> [nHentai.net](https:/nhentai.net 'nHentai Homepage').`)
-    .setFooter(`Doujin Query | \©️${new Date().getFullYear()} Mai`);
+    .setFooter(`Doujin Query | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`);
 
     const msg = await message.channel.send(prompt);
     const book = await api.getBook(id).catch(()=>null);
