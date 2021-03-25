@@ -29,7 +29,7 @@ module.exports = {
       .setColor('GREY')
       .setTitle(`${message.author.tag}'s Inventory`)
       .setDescription('[ WIP ]')
-      .setFooter(`Market | \©️${new Date().getFullYear()} Mai\u2000\u2000•\u2000\u2000Page ${i+1} of ${o.length}`)
+      .setFooter(`Market | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241\u2000\u2000•\u2000\u2000Page ${i+1} of ${o.length}`)
       .addFields(...chunk.sort((A,B) => A.id - B.id ).map(d => {
         const item = market.find(x => x.id == d.id);
         return {
