@@ -25,7 +25,7 @@ module.exports = async (client, member) => {
       .setTitle(`${member.user.tag} has left our server!`)
       .setThumbnail(member.user.displayAvatarURL({format: 'png', dynamic: true}))
       .setDescription(`Byebye ${member}!! Sad to see you go!\n\nWe are back to **${member.guild.memberCount}** members!`)
-      .setFooter(`Leaving Member Announcer | ©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Leaving Member Announcer | ©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   };
 
