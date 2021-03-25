@@ -7,6 +7,7 @@ const animeDB = require('../../assets/json/anime.json');
 
 module.exports = {
   name: 'anirandom',
+  ownerOnly: true,
   aliases: [ 'anirand', 'anirecommend' ],
   cooldown: {
     time: 15000,
