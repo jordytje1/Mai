@@ -9,6 +9,7 @@ const text = require('../../util/string');
 module.exports = {
   name: 'seiyuu',
   aliases: [ 'voice' , 'va' ],
+  ownerOnly: true,
   cooldown: {
     time: 10000,
     msg: 'Oops! You are going to fast! Please slow down to avoid being rate-limited!'
