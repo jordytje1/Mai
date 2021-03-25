@@ -54,7 +54,7 @@ module.exports = {
         ].join('\n\n'))
       .setFooter([
         `Page ${i + 1} of ${a.length}`,
-        `hanime.tv query | \©️${new Date().getFullYear()} Mai`
+        `hanime.tv query | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`
       ].join('\u2000\u2000•\u2000\u2000'))
       .addFields([
         { name: 'Released', value: moment(new Date(entry.released_at * 1000)).format('dddd, do MMMM YYYY'), inline: true },
