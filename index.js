@@ -459,7 +459,7 @@ let lol = "824728580235198515";
 let loll = "824728606843338752";
 let lolll = "824728649831153705";
 let lollll = "824728690470158416";
-let lollll1 = "824728754986418266";
+let lolo = "824728754986418266";
 let lollllll = "824728794605813780";
 let lolllllll = "824728835366977626";
 let lollllllll = "824728878999535616";
@@ -512,8 +512,8 @@ client.on("raw", async e => {
           break;
         }
         case "5️⃣": {
-          member.roles.add(lolllll);
-          member.roles.add(lolllll);
+          member.roles.add(lolo);
+          member.roles.add(lolo);
           break;
         }
         case "6️⃣": {
@@ -625,8 +625,8 @@ client.on("raw", async e => {
           break;
         }
         case "5️⃣": {
-          member.roles.remove(lolllll);
-          member.roles.remove(lolllll);
+          member.roles.remove(lolo);
+          member.roles.remove(lolo);
           break;
         }
         case "6️⃣": {
