@@ -38,7 +38,7 @@ module.exports = {
       .setDescription(`List of all filters enabled or disabled.\nUse \`${client.prefix}filter [filter name]\` to add a filter to a song.`)
       .addField('Filters', filterEntries[0].join('\n'), true)
       .addField('\u200b', filterEntries[1].join('\n'), true)
-      .setFooter(`Music System | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Music System | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   }
 };
