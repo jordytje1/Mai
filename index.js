@@ -455,15 +455,15 @@ client.on("messageReactionAdd", async (reaction, user) => {
 
 
 
-let 11 = "824728580235198515";
-let 12 = "824728606843338752";
-let 13 = "824728649831153705";
-let 14 = "824728690470158416";
-let 15 = "824728754986418266";
-let 16 = "824728794605813780";
-let 17 = "824728835366977626";
-let 18 = "824728878999535616";
-let 19 = "824728918417473627";
+let lol = "824728580235198515";
+let loll = "824728606843338752";
+let lolll = "824728649831153705";
+let lollll = "824728690470158416";
+let lollll1 = "824728754986418266";
+let lollllll = "824728794605813780";
+let lolllllll = "824728835366977626";
+let lollllllll = "824728878999535616";
+let lolllllllll = "824728918417473627";
 
 let vrouw = "824728424450097182";
 let man = "824728384239960115";
@@ -492,48 +492,48 @@ client.on("raw", async e => {
     if (e.d.message_id == idMsg) {
       switch (e.d.emoji.name) {
         case "1️⃣": {
-          member.roles.add(11);
-          member.roles.add(11);
+          member.roles.add(lol);
+          member.roles.add(lol);
           break;
         }
         case "2️⃣": {
-          member.roles.add(12);
-          member.roles.add(12);
+          member.roles.add(loll);
+          member.roles.add(loll);
           break;
         }
         case "3️⃣": {
-          member.roles.add(13);
-          member.roles.add(13);
+          member.roles.add(lolll);
+          member.roles.add(lolll);
           break;
         }
           case "4️⃣": {
-          member.roles.add(14);
-          member.roles.add(14);
+          member.roles.add(lollll);
+          member.roles.add(lollll);
           break;
         }
         case "5️⃣": {
-          member.roles.add(15);
-          member.roles.add(15);
+          member.roles.add(lolllll);
+          member.roles.add(lolllll);
           break;
         }
         case "6️⃣": {
-          member.roles.add(16);
-          member.roles.add(16);
+          member.roles.add(lollllll);
+          member.roles.add(lollllll);
           break;
         }
           case "7️⃣": {
-          member.roles.add(17);
-          member.roles.add(17);
+          member.roles.add(lolllllll);
+          member.roles.add(lolllllll);
           break;
         }
         case "8️⃣": {
-          member.roles.add(18);
-          member.roles.add(18);
+          member.roles.add(lollllllll);
+          member.roles.add(lollllllll);
           break;
         }
         case "9️⃣": {
-          member.roles.add(19);
-          member.roles.add(19);
+          member.roles.add(lolllllllll);
+          member.roles.add(lolllllllll);
           break;
         }
       }
@@ -605,48 +605,48 @@ client.on("raw", async e => {
     if (e.d.message_id == idMsg) {
       switch (e.d.emoji.name) {
         case "1️⃣": {
-          member.roles.remove(11);
-          member.roles.remove(11);
+          member.roles.remove(lol);
+          member.roles.remove(lol);
           break;
         }
         case "2️⃣": {
-          member.roles.remove(12);
-          member.roles.remove(12);
+          member.roles.remove(loll);
+          member.roles.remove(loll);
           break;
         }
         case "3️⃣": {
-          member.roles.remove(13);
-          member.roles.add(13);
+          member.roles.remove(lolll);
+          member.roles.remove(lolll);
           break;
         }
           case "4️⃣": {
-          member.roles.remove(14);
-          member.roles.remove(14);
+          member.roles.remove(lollll);
+          member.roles.remove(lollll);
           break;
         }
         case "5️⃣": {
-          member.roles.remove(15);
-          member.roles.remove(15);
+          member.roles.remove(lolllll);
+          member.roles.remove(lolllll);
           break;
         }
         case "6️⃣": {
-          member.roles.remove(16);
-          member.roles.remove(16);
+          member.roles.remove(lollllll);
+          member.roles.remove(lollllll);
           break;
         }
           case "7️⃣": {
-          member.roles.remove(17);
-          member.roles.remove(17);
+          member.roles.remove(lolllllll);
+          member.roles.remove(lolllllll);
           break;
         }
         case "8️⃣": {
-          member.roles.remove(18);
-          member.roles.remove(18);
+          member.roles.remove(lollllllll);
+          member.roles.remove(lollllllll);
           break;
         }
         case "9️⃣": {
-          member.roles.remove(19);
-          member.roles.remove(19);
+          member.roles.remove(lolllllllll);
+          member.roles.remove(lolllllllll);
           break;
         }
       }
