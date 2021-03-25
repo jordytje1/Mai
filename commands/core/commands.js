@@ -36,7 +36,7 @@ module.exports = {
       .setColor('GREY')
       .addFields(fields.sort((A,B) => B.value.length - A.value.length))
       .setAuthor('Mai\'s full list of commands!')
-      .setFooter(`Command List | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Command List | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       .setDescription([
         `You may get the full detail of each command by typing \`${client.prefix}help <command>\``,
         'Alternitavely, you may check out https://commands.mai-san.ml/ for full command details'
