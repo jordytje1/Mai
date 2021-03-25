@@ -60,7 +60,7 @@ module.exports = {
     return message.channel.send(
       new MessageEmbed()
       .setColor('GREY')
-      .setFooter(`MALProfile | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`MALProfile | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       .setAuthor(`${response.username}'s Profile`, response.image_url, response.url)
       .setDescription([
         text.truncate((response.about || '').replace(/(<([^>]+)>)/ig, ''), 350, `...[Read More](${response.url})`),
