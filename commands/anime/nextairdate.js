@@ -11,6 +11,7 @@ module.exports = {
   aliases: [ 'nextairing', 'nextair', 'nextep', 'nextepisode' ],
   cooldown: {
     time: 10000,
+    ownerOnly: true,
     message: 'You are going too fast! Please slow down to avoid being rate-limited!'
   },
   clientPermissions: [ 'EMBED_LINKS' ],
