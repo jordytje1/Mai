@@ -4,6 +4,7 @@ const text = require('../../util/string.js');
 
 module.exports = {
   name: 'waifu',
+  ownerOnly: true,
   aliases: [],
   group: 'anime',
   description: 'Generates random waifu.',
