@@ -20,7 +20,7 @@ module.exports = {
     const query = args.join(' ') || 'Pikachu';
     const embed = new MessageEmbed()
     .setColor('YELLOW')
-    .setFooter(`Pokédex - The Pokémon Company\©️ | \©️${new Date().getFullYear()} Mai`);
+    .setFooter(`Pokédex - The Pokémon Company\©️ | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`);
 
     const prompt = await message.channel.send(
       embed.setDescription(`Searching pokédex for **${query}**`)
