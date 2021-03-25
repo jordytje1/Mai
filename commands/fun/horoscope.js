@@ -33,7 +33,7 @@ module.exports = {
     return message.channel.send(
       new MessageEmbed()
       .setColor('GREY')
-      .setFooter(`Horoscope | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Horoscope | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       .setAuthor(signs[sign.toLowerCase()] + ' ' + data.sunsign || sign)
       .setDescription(data.horoscope.replace('(c) Kelli Fox, The Astrologer, http://new.theastrologer.com', ''))
       .addFields([
