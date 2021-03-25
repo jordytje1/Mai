@@ -29,7 +29,7 @@ module.exports = {
           .setDescription(currentQueue.tracks.map((track, i) => {
             return `${i + 1} - **${track.title} | ${track.author}** (requested by : ${track.requestedBy.username})`;
           }).slice(0, 5).join('\n'))
-          .setFooter(`${currentQueue.tracks.length > 5 ? `And ${currentQueue.tracks.length - 5} other songs...` : `In the playlist ${currentQueue.tracks.length} song(S)...`} | \©️${new Date().getFullYear()} Mai`)
+          .setFooter(`${currentQueue.tracks.length > 5 ? `And ${currentQueue.tracks.length - 5} other songs...` : `In the playlist ${currentQueue.tracks.length} song(S)...`} | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       );
     };
   }
