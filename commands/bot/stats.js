@@ -70,7 +70,7 @@ module.exports = {
             `CPU:\u2000\u2000**${cpus()[0].model}**`,
           ].join('\n'),
         },{value:'━━━━━━━━━━━━━━━━━━━━━━━━━━━━',name:`Uptime:\u2000${moment.duration(client.uptime, 'ms').format('D [days,] H [hours, and] m [minutes]')}.`}
-      ]).setFooter(`Bot Status | \©️${new Date().getFullYear()} Mai`)
+      ]).setFooter(`Bot Status | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   }
 };
