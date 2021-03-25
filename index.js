@@ -599,6 +599,7 @@ client.on("raw", async e => {
   }
 });
 
+
 client.on("raw", async e => {
   if (e.t == "MESSAGE_REACTION_REMOVE") {
     let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
