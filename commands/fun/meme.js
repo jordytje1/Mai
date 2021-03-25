@@ -26,7 +26,7 @@ module.exports = {
       .setColor('GREY')
       .setImage(data.url)
       .setAuthor(data.title, null, data.postLink)
-      .setFooter(`${data.subreddit}:Meme | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`${data.subreddit}:Meme | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   }
 };
