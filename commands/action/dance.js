@@ -16,7 +16,7 @@ module.exports = {
       .setColor('GREY')
       .setDescription(`${message.author} started dancing!`)
       .setImage(client.images.dance())
-      .setFooter(`Action Commands | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Action Commands | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   }
 }
