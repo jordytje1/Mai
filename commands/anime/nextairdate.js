@@ -35,7 +35,7 @@ module.exports = {
     const embed = new MessageEmbed()
     .setColor('RED')
     .setThumbnail('https://i.imgur.com/qkBQB8V.png')
-    .setFooter(`Airdate Query with AL | \©️${new Date().getFullYear()} Mai`);
+    .setFooter(`Airdate Query with AL | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`);
 
     if (res.errors && res.errors.some(e => e.message !== 'Not Found.')){
       return message.channel.send(
