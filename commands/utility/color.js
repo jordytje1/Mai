@@ -19,7 +19,7 @@ module.exports = {
       new MessageEmbed()
       .setColor(`#${color}`)
       .setImage('https://dummyimage.com/200/' + color)
-      .setFooter(`Color ${color} | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Color ${color} | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     );
   }
 };
