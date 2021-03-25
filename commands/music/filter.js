@@ -36,7 +36,7 @@ module.exports = {
           .setColor(`#ffb6c1`)
           .setAuthor(`Filter "${filter}" ${boolean ? 'Enabled' : 'Disabled'}!`)
           .setDescription(`Yay! Don't forget to [vote for me](${client.config.websites['top.gg']})`)
-          .setFooter(`Music System | \©️${new Date().getFullYear()} Mai`)
+          .setFooter(`Music System | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
         );
       };
 
