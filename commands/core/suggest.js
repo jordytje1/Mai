@@ -14,7 +14,7 @@ module.exports = {
   run: async (client, message, args) => {
 
     const embed = new MessageEmbed()
-    .setFooter(`Suggest | \©️${new Date().getFullYear()} Mai`)
+    .setFooter(`Suggest | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     .setColor('RED');
 
     if (!args.length){
