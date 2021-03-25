@@ -8,6 +8,7 @@ const mangaDB = require('../../assets/json/manga.json');
 module.exports = {
   name: 'mangarandom',
   aliases: [ 'mangarand' ],
+  ownerOnly: true,
   cooldown: {
     time: 15000,
     message: 'You are going too fast. Please slow down to avoid getting rate-limited!'
