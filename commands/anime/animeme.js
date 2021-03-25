@@ -4,6 +4,7 @@ const text = require('../../util/string');
 
 module.exports = {
   name: 'animeme',
+  ownerOnly: true,
   aliases: [ 'ameme' , 'animememe' , 'animemes' , 'animememes' , 'amemes' ],
   guildOnly: true,
   group: 'anime',
