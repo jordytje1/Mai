@@ -31,7 +31,7 @@ module.exports = {
         .setColor('GREY')
         .setDescription(data.lyrics)
         .setThumbnail(data.thumbnail.genius)
-        .setFooter(`Lyrics | \©️${new Date().getFullYear()} Mai`)
+        .setFooter(`Lyrics | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
         .setAuthor(`${data.title}\n${data.author}`, null, data.links.genius)
       );
     };
@@ -57,7 +57,7 @@ module.exports = {
         .setThumbnail(data.thumbnail.genius)
         .setFooter([
           `Page ${i+1} of ${lyrics_subarray.length}`,
-          `Lyrics | \©️${new Date().getFullYear()} Mai`
+          `Lyrics | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`
         ].join( '\u2000•\u2000' ))
         .setAuthor(`${data.title}\n${data.author}`, null, data.links.genius)
       )
