@@ -69,7 +69,7 @@ module.exports = {
         .setFooter([
           `Search duration: ${Math.abs(elapsed / 1000).toFixed(2)} seconds`,
           `Page ${pages.size + 1} of ${data.results.slice(0,10).length}`,
-          `Manga Query with MAL | \©️${new Date().getFullYear()} Mai`
+          `Manga Query with MAL | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`
         ].join('\u2000\u2000•\u2000\u2000'))
         .addFields([
           { name: 'Type', value: res.type, inline: true },
