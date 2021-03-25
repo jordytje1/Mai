@@ -27,7 +27,7 @@ module.exports = {
     const search = args.join(' ') || 'Seto Asami';
 
     const embed = new MessageEmbed().setColor('YELLOW')
-    .setFooter(`Seiyuu Query with AL | \©️${new Date().getFullYear()} Mai`)
+    .setFooter(`Seiyuu Query with AL | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     .setThumbnail('https://i.imgur.com/u6ROwvK.gif')
     .setDescription([
       `\u200B\nSearching for character named **${search}** on `,
@@ -93,7 +93,7 @@ module.exports = {
     ])
     .setFooter([
       `Search duration: ${Math.abs(elapsed / 1000).toFixed(2)} seconds`,
-      `Seiyuu Query with AL | \©️${new Date().getFullYear()} Mai`
+      `Seiyuu Query with AL | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`
     ].join('\u2000•\u2000'));
 
     return await mainpage.edit(embed).catch(()=>null) || message.channel.send(embed).then(()=>null);
