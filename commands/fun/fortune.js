@@ -17,7 +17,7 @@ module.exports = {
     new MessageEmbed()
     .setColor('GREY')
     .setAuthor(message.author.tag)
-    .setFooter(`Fortune | \©️${new Date().getFullYear()} Mai`)
+    .setFooter(`Fortune | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
     .setDescription(fortunes[Math.floor(Math.random() * fortunes.length)])
   )
 };
