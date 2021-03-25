@@ -57,7 +57,7 @@ module.exports = {
       .setTitle(data.name)
       .setImage(res.items[0].tiny_image)
       .setURL(`https://store.steampowered.com/app/${data.steam_appid}`)
-      .setFooter(`Steam @ Steam.Inc©️  | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Steam @ Steam.Inc©️  | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       .addFields([
         { name: 'Price', value: `•\u2000 ${price}`, inline: true },
         { name: 'Metascore', value: `•\u2000 ${data.metacritic?.score||'???'}`, inline: true },
