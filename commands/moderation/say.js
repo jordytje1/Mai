@@ -18,8 +18,7 @@ module.exports = {
                 .setTitle('')
                 .setColor("#00c1ff")
                 .setDescription(args.slice(1).join(' '))
-                .setFooter(`Requested by ${message.author.tag} `)
-                .setTimestamp()
+                .setFooter(``)
         
         
         //if (args[0].toLowerCase() === 'embed') {
