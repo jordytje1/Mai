@@ -455,70 +455,143 @@ client.on("messageReactionAdd", async (reaction, user) => {
 
 
 
-let cargoInfo = "823989536295878666";
-let cargoAdm = "823989536295878666";
-let cargoVest = "823989536295878666";
+let 11 = "824728580235198515";
+let 12 = "824728606843338752";
+let 13 = "824728649831153705";
+let 14 = "824728690470158416";
+let 15 = "824728754986418266";
+let 16 = "824728794605813780";
+let 17 = "824728835366977626";
+let 18 = "824728878999535616";
+let 19 = "824728918417473627";
 
-let cargoIngles = "823989536295878666";
-let cargoEspanhol = "823989536295878666";
+let vrouw = "824728424450097182";
+let man = "824728384239960115";
+let geen = "824728489629974628";
 
-let cargo1 = "823989536295878666";
-let cargo2 = "823989536295878666";
-let cargo3 = "823989536295878666";
+let dmopen = "824729186274508871";
+let dmclosed = "824728975002697759";
 
-let cargoMembro = "823989536295878666";
 
-let idMsg = "824375562293739582";
+let kat = "824729291186765834";
+let hond = "824729340356984922";
+let paard = "824729604899471411";
+let knaagdier = "824729421280837693";
+let reptiel = "824729481632809041";
+let overig = "824729712193568849";
 
-let idGuild = "734869150240866484";
+let cargoMembro = "";
+
+let idMsg = "824726524988620821";
+
+let idGuild = "822221981604642846";
 
 client.on("raw", async e => {
   if (e.t == "MESSAGE_REACTION_ADD") {
     let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
     if (e.d.message_id == idMsg) {
       switch (e.d.emoji.name) {
-        case "💻": {
-          member.roles.add(cargoInfo);
-          member.roles.add(cargoMembro);
+        case "1️⃣": {
+          member.roles.add(11);
+          member.roles.add(11);
           break;
         }
-        case "📊": {
-          member.addRole(cargoAdm);
-          member.addRole(cargoMembro);
+        case "2️⃣": {
+          member.roles.add(12);
+          member.roles.add(12);
           break;
         }
-        case "👚": {
-          member.addRole(cargoVest);
-          member.addRole(cargoMembro);
+        case "3️⃣": {
+          member.roles.add(13);
+          member.roles.add(13);
+          break;
+        }
+          case "4️⃣": {
+          member.roles.add(14);
+          member.roles.add(14);
+          break;
+        }
+        case "5️⃣": {
+          member.roles.add(15);
+          member.roles.add(15);
+          break;
+        }
+        case "6️⃣": {
+          member.roles.add(16);
+          member.roles.add(16);
+          break;
+        }
+          case "7️⃣": {
+          member.roles.add(17);
+          member.roles.add(17);
+          break;
+        }
+        case "8️⃣": {
+          member.roles.add(18);
+          member.roles.add(18);
+          break;
+        }
+        case "9️⃣": {
+          member.roles.add(19);
+          member.roles.add(19);
           break;
         }
       }
-    } else if (e.d.message_id == "824375562293739582") {
+    } else if (e.d.message_id == "824727012395450408") {
       let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
       switch (e.d.emoji.name) {
-        case "🇺🇸": {
-          member.addRole(cargoIngles);
+        case "✅": {
+          member.roles.add(dmopen);
           break;
         }
-        case "🇪🇸": {
-          member.addRole(cargoEspanhol);
+        case "❎": {
+          member.roles.add(dmclosed);
           break;
         }
       }
-    } else if (e.d.message_id == "824375562293739582") {
+    } else if (e.d.message_id == "824724871979991060") {
       let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
       console.log(e.d.emoji.name);
       switch (e.d.emoji.name) {
         case "1️⃣": {
-          member.addRole(cargo1);
+          member.roles.add(vrouw);
           break;
         }
         case "2️⃣": {
-          member.addRole(cargo2);
+          member.roles.add(man);
           break;
         }
         case "3️⃣": {
-          member.roles.add(cargo3);
+          member.roles.add(geen);
+          break;
+                  }
+      }
+    } else if (e.d.message_id == "824728239293464606") {
+      let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
+      console.log(e.d.emoji.name);
+      switch (e.d.emoji.name) {
+        case "🐱": {
+          member.roles.add(kat);
+          break;
+        }
+        case "🐶": {
+          member.roles.add(hond);
+          break;
+        }
+        case "🐴": {
+          member.roles.add(paard);
+          break;
+          }
+        case "🐹": {
+          member.roles.add(knaagdier);
+          break;
+          }
+        case "🦎": {
+          member.roles.add(reptiel);
+          break;
+          }
+        case "🌐": {
+          member.roles.add(overig);
           break;
         }
       }
@@ -531,48 +604,107 @@ client.on("raw", async e => {
     let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
     if (e.d.message_id == idMsg) {
       switch (e.d.emoji.name) {
-        case "💻": {
-          member.roles.remove(cargoInfo);
-          member.roles.remove(cargoMembro);
+        case "1️⃣": {
+          member.roles.remove(11);
+          member.roles.remove(11);
           break;
         }
-        case "📊": {
-          member.addRole(cargoAdm);
-          member.addRole(cargoMembro);
+        case "2️⃣": {
+          member.roles.remove(12);
+          member.roles.remove(12);
           break;
         }
-        case "👚": {
-          member.addRole(cargoVest);
-          member.addRole(cargoMembro);
+        case "3️⃣": {
+          member.roles.remove(13);
+          member.roles.add(13);
+          break;
+        }
+          case "4️⃣": {
+          member.roles.remove(14);
+          member.roles.remove(14);
+          break;
+        }
+        case "5️⃣": {
+          member.roles.remove(15);
+          member.roles.remove(15);
+          break;
+        }
+        case "6️⃣": {
+          member.roles.remove(16);
+          member.roles.remove(16);
+          break;
+        }
+          case "7️⃣": {
+          member.roles.remove(17);
+          member.roles.remove(17);
+          break;
+        }
+        case "8️⃣": {
+          member.roles.remove(18);
+          member.roles.remove(18);
+          break;
+        }
+        case "9️⃣": {
+          member.roles.remove(19);
+          member.roles.remove(19);
           break;
         }
       }
-    } else if (e.d.message_id == "824375562293739582") {
+    } else if (e.d.message_id == "824727012395450408") {
       let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
       switch (e.d.emoji.name) {
-        case "🇺🇸": {
-          member.addRole(cargoIngles);
+        case "✅": {
+          member.roles.remove(dmopen);
           break;
         }
-        case "🇪🇸": {
-          member.addRole(cargoEspanhol);
+        case "❎": {
+          member.roles.remove(dmclosed);
           break;
         }
       }
-    } else if (e.d.message_id == "824375562293739582") {
+    } else if (e.d.message_id == "824724871979991060") {
       let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
       console.log(e.d.emoji.name);
       switch (e.d.emoji.name) {
         case "1️⃣": {
-          member.addRole(cargo1);
+          member.roles.remove(vrouw);
           break;
         }
         case "2️⃣": {
-          member.addRole(cargo2);
+          member.roles.remove(man);
           break;
         }
         case "3️⃣": {
-          member.roles.add(cargo3);
+          member.roles.remove(geen);
+          break;
+                  }
+      }
+    } else if (e.d.message_id == "824728239293464606") {
+      let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
+      console.log(e.d.emoji.name);
+      switch (e.d.emoji.name) {
+        case "🐱": {
+          member.roles.remove(kat);
+          break;
+        }
+        case "🐶": {
+          member.roles.remove(hond);
+          break;
+        }
+        case "🐴": {
+          member.roles.remove(paard);
+          break;
+          }
+        case "🐹": {
+          member.roles.remove(knaagdier);
+          break;
+          }
+        case "🦎": {
+          member.roles.remove(reptiel);
+          break;
+          }
+        case "🌐": {
+          member.roles.remove(overig);
           break;
         }
       }
