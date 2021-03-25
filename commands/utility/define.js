@@ -27,7 +27,7 @@ module.exports = {
       .addField('Example(s)', '[Mai sakurajima] is the best girl around. No one could beat her, not even zero two.')
       .addField('\u200b', 'Submitted by Sakuta Azusagawa')
       .setColor('#e86222')
-      .setFooter(`Define | \©️${new Date().getFullYear()} Mai`));
+      .setFooter(`Define | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`));
     };
 
     if (filter.isProfane(args.join(' '))
@@ -47,7 +47,7 @@ module.exports = {
       .setColor('#e86222')
       .setURL(defs.urbanURL)
       .setTitle(`Definition of ${defs.word}`)
-      .setFooter(`Define | \©️${new Date().getFullYear()} Mai`)
+      .setFooter(`Define | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       .setAuthor('Urban Dictionary', 'https://files.catbox.moe/kkkxw3.png', 'https://www.urbandictionary.com/')
       .addFields([
         {
