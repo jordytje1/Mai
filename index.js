@@ -553,11 +553,11 @@ client.on("raw", async e => {
       let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
       console.log(e.d.emoji.name);
       switch (e.d.emoji.name) {
-        case ":woman_raising_hand:": {
+        case "🙋‍♀️": {
           member.roles.add(vrouw);
           break;
         }
-        case ":man_raising_hand:": {
+        case "🙋‍♂️": {
           member.roles.add(man);
           break;
         }
@@ -667,11 +667,11 @@ client.on("raw", async e => {
       let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
       console.log(e.d.emoji.name);
       switch (e.d.emoji.name) {
-        case "1️⃣": {
+        case "🙋‍♀️": {
           member.roles.remove(vrouw);
           break;
         }
-        case "2️⃣": {
+        case "🙋‍♂️": {
           member.roles.remove(man);
           break;
         }
