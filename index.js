@@ -770,9 +770,69 @@ async function att(){
 }
 
 
+let msgidd = "825095320220336188";
+let userApplications = {}
+client.on("raw", async e => {
+  if (e.t == "MESSAGE_REACTION_ADD") {
+    let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
+    if (e.d.message_id == msgidd) {
+      case "9️⃣": {
+
+  let authorId = message.author.id;
+	  
+      if (!(authorId in userApplications)) {
+          userApplications[authorId] = { "step" : 1}
+
+          message.author.send("```We need to ask some questions so  we can know a litte bit about yourself```");
+          message.author.send("```Application Started - Type '#Cancel' to cancel the application```");
+          message.author.send("```Question 1: In-Game Name?```");
+      }
+
+  } else {
+
+      if (message.channel.type === "dm" && authorId in userApplications) {
+          let authorApplication = userApplications[authorId];
+
+          if (authorApplication.step == 1 ) {
+              authorApplication.answer1 = message.content;
+              message.author.send("```Question 2: Age?```");
+              authorApplication.step ++;
+          }
+          else if (authorApplication.step == 2) {
+		   authorApplication.answer2 = message.content;
+              message.author.send("```Question 3: Timezone? NA, AU, EU, NZ, or Other? (If other, describe your timezone)```");
+              authorApplication.step ++;
+          }
+          else if (authorApplication.step == 3) {
+		   authorApplication.answer3 = message.content;
+              message.author.send("```Question 4: Do you have schematica?```");
+              authorApplication.step ++;
+          }
+
+          else if (authorApplication.step == 4) {
+		   authorApplication.answer4 = message.content;
+              message.author.send("```Thanks for your registration. Type %apply to register again```");
+              delete userApplications[authorId];
+    let applystaff = new MessageEmbed()
+    .setTitle('apply')
+    .setThumbnail(message.author.avatarURL())
+    .addFields(
+		{ name: 'Question 1: In-Game Name?', value: `${authorApplication.answer1}` },
+		{ name: 'Question 2: Age?', value: `${authorApplication.answer2}` },
+		{ name: 'Question 3: Timezone? NA, AU, EU, NZ, or Other? (If other, describe your timezone', value: `${authorApplication.answer3}` },
+		{ name: 'Question 4: Do you have schematica?', value: `${authorApplication.answer4}` },
+	)
+    .setColor("#ff2509")
+    .setFooter(`Requested`)
+    .setTimestamp()
+		  client.channels.cache.get('752211513401671763').send(applystaff);
+          }
+
+      }
+  }
 
 
-
+});
 
 
 
