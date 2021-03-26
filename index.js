@@ -776,9 +776,8 @@ client.on("raw", async e => {
   if (e.t == "MESSAGE_REACTION_ADD") {
     let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
     if (e.d.message_id == msgidd) {
+	    switch (e.d.emoji.name) {
       case "9️⃣": {
-      break;
-      }
 
   let authorId = message.author.id;
 	  
