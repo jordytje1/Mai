@@ -789,7 +789,7 @@ client.on("raw", async e => {
           message.author.send("```Question 1: In-Game Name?```");
       }
 
-  } else {
+  } else
 
       if (message.channel.type === "dm" && authorId in userApplications) {
           let authorApplication = userApplications[authorId];
