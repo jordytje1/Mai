@@ -777,6 +777,8 @@ client.on("raw", async e => {
     let member = client.guilds.cache.get(e.d.guild_id).members.cache.get(e.d.user_id);
     if (e.d.message_id == msgidd) {
       case "9️⃣": {
+      break;
+      }
 
   let authorId = message.author.id;
 	  
