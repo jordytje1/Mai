@@ -29,7 +29,7 @@ module.exports = class MusicPlayer extends Player {
         .setColor(color||'#f04e48')
         .setAuthor(author||null)
         .setDescription(description||'')
-        .setFooter(`Music System | \©️${new Date().getFullYear()} Mai`)
+        .setFooter(`Music System | \©️${new Date().getFullYear()} 𝕯𝖗𝖆𝖌𝖔𝖓𝖇𝖔𝖞#6241`)
       );
     };
 
